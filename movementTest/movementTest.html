@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="movimento.css">
+</head>
+
+<body>
+    <div id="batMobile">
+        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4860795e-12c4-4bc2-bd7a-4b55c30df95c/dbtz4tq-2b1e90c9-32a7-4e99-858b-6ed3d2ca9e99.png/v1/fill/w_900,h_307/the_batmobile_by_alexbadass_dbtz4tq-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MzA3IiwicGF0aCI6IlwvZlwvNDg2MDc5NWUtMTJjNC00YmMyLWJkN2EtNGI1NWMzMGRmOTVjXC9kYnR6NHRxLTJiMWU5MGM5LTMyYTctNGU5OS04NThiLTZlZDNkMmNhOWU5OS5wbmciLCJ3aWR0aCI6Ijw9OTAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.pqghJlHGZ6dAEakp-0_KKFAztpuYvDbUPP6NE3cBxuU"
+            alt="">
+    </div>
+</body>
+
+</html>
+
+<script>
+    var x = 0;
+    var y = 0;
+    const batMobile = document.querySelector("#batMobile");
+    // Definindo os eixos do plano cartesiano
+    window.addEventListener("keydown", function moverBaixo(event) { 
+        var key = event.key 
+        if (key == `ArrowRight`) {
+            x = x + 10;
+            batMobile.style.marginLeft = x + "px";
+            batMobile.style.transform = `rotateY(180deg)`
+        } else if (key == `ArrowLeft`){
+            x = x - 10;
+            batMobile.style.marginLeft = x + "px";
+            batMobile.style.transform = `rotateY(0deg)`
+        } else if (key == `ArrowUp`){
+            y = y + 10;
+            batMobile.style.marginBottom = y + "px";
+            batMobile.style.transform = `rotateZ(90deg)`;
+        } else if (key == `ArrowDown`){
+            y = y -10;
+            batMobile.style.marginBottom = y + "px";
+            batMobile.style.transform = `rotateZ(270deg)`;
+        }
+    })
+</script>
