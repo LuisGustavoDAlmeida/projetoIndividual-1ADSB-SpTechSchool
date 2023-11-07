@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-image: url(./Images/batCaveBackground.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    border: 5px solid red;
+}
+
+.container-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 85%;
+    height: 500px;
+    border: 5px solid blue;
+}
+
+.slider {
+    opacity: 0;
+    /* display: none; Padrão do Slider */
+    position: absolute;
+    height: 100%;
+    border-radius: 50px;
+    transition: opacity 2s;
+}
+
+.on {
+    opacity: 1;
+}
+
+#prevButton,
+#nextButton {
+    width: 80px;
+    height: 50px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 5px;
+    border: 5px solid yellow;
+}
+
+#prevButton img,
+#nextButton img {
+    width: 100%;
+    height: 100%;
+
+}

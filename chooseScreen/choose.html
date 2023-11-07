@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chooseScreen</title>
+    <link rel="stylesheet" href="../chooseScreen/choose.css">
+</head>
+
+<body>
+    <main>
+        <div class="container-slider">
+            <button id="prevButton"> <img src="./Images/batArrow.png" alt="" width="50px"></button>
+            <div class="container-images">
+                <img src="./Images/wayneManor.jpg" alt="" class="slider">
+                <img src="./Images/arkhamAsylum.jpg" alt="" class="slider">
+                <img src="./Images/blackGatePenitentiary.jpg" alt="" class="slider">
+                <img src="./Images/wayneEnterprises.jpg" alt="" class="slider">
+            </div>
+            <button id="nextButton"> <img src="./Images/batArrow.png" alt="" width="50px"></button>
+        </div>
+    </main>
+</body>
+<script>
+    const slider = document.querySelectorAll('.slider');
+    console.log(slider);
+    const nextButton = document.querySelectorAll('#nextButton');
+    const prevButton = document.querySelectorAll('#prevButton');
+    let actualSlide = 0;
+    slider[actualSlide].classList.add ('on');
+
+</script>
+
+</html>
