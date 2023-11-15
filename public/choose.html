@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chooseScreen</title>
-    <link rel="stylesheet" href="../chooseScreen/choose.css">
+    <link rel="stylesheet" href="./css/choose.css">
 </head>
 
 <body>
     <main>
         <div class="container-slider">
-            <button onclick="prevSlider()" id="prevButton"> <img src="./Images/batArrow.png" alt=""
+            <button onclick="prevSlider()" id="prevButton"> <img src="./assets/imgs/chooseScreen/batArrow.png" alt=""
                     width="50px"></button>
             <div class="container-images">
-                <img onclick="goToLocation()" src="./Images/wayneManor.jpg" alt="" class="slider">
-                <img onclick="goToLocation()" src="./Images/arkhamAsylum.jpg" alt="" class="slider">
-                <img onclick="goToLocation()" src="./Images/blackGatePenitentiary.jpg" alt="" class="slider">
-                <img onclick="goToLocation()" src="./Images/wayneEnterprises.jpg" alt="" class="slider">
+                <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/wayneManor.jpg " alt="" class="slider">
+                <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/arkhamAsylum.jpg" alt="" class="slider">
+                <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/blackGatePenitentiary.jpg" alt="" class="slider">
+                <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/wayneEnterprises.jpg" alt="" class="slider">
             </div>
-            <button onclick="nextSlider()" id="nextButton"> <img src="./Images/batArrow.png" alt=""
+            <button onclick="nextSlider()" id="nextButton"> <img src="./assets/imgs/chooseScreen/batArrow.png" alt=""
                     width="50px"></button>
         </div>
     </main>
@@ -56,7 +56,7 @@
     }
     function goToLocation() {
         if (actualSlide == 0) {
-            window.location.href = "../webSites/wayneManor/wayneManor.html";
+            window.location.href = "./index.html";
         } else if (actualSlide == 1) {
             window.location.href = "../webSites/arkhamAsylum/arkhamAsylum.html";
         } else if (actualSlide == 2) {

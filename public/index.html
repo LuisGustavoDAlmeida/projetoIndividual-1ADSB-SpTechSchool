@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="./css/wayneManor.css"> -->
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
     <main>
-        <!-- <section class="selection-screen">
+        <section class="selection-screen">
             <div class="container">
                 <div class="title">
                     <h1>The Dark Knight Returns</h1>
@@ -115,7 +115,7 @@
         </section>
         <section class="film4 parallax">
 
-        </section> -->
+        </section>
         <section class="register parallax" id="register">
             <div class="register-area">
                 <h1>Quer combater os supervilões de Gotham como o cavaleiro das trevas? Se registre aqui!</h1>
@@ -125,8 +125,8 @@
                     <span>Sobrenome:</span><input type="text" placeholder="Sobrenome" id="input_lastName">
                     <span>Email:</span><input type="email" placeholder="Email" id="input_email">
                     <span>Senha:</span><input type="password" placeholder="Senha" id="input_password">
-                    <span>Confirmar Senha:</span><input type="password" placeholder="Confirmar"
-                        id="input_passwordConfirm">
+                    <!-- <span>Confirmar Senha:</span><input type="password" placeholder="Confirmar"
+                        id="input_passwordConfirm"> -->
                     <button onclick="cadastrar()">Registrar</button>
                 </div>
             </div>
@@ -145,16 +145,16 @@
 </html>
 
 <script>
-    // const sections = document.querySelectorAll("section");
-    // const comicsImages = document.querySelectorAll("#comics");
-    // var actualComic = 1;
-    // const sectionFilm = document.querySelector(".film");
-    // console.log(comicsImages);
+    const sections = document.querySelectorAll("section");
+    const comicsImages = document.querySelectorAll("#comics");
+    var actualComic = 1;
+    const sectionFilm = document.querySelector(".film");
+    console.log(comicsImages);
 
-    // sections[1].addEventListener("click", function () {
-    //     comicsImages[actualComic].classList.add("on");
-    //     actualComic++;
-    // })
+    sections[1].addEventListener("click", function () {
+        comicsImages[actualComic].classList.add("on");
+        actualComic++;
+    })
 
     function cadastrar() {
         // aguardar();

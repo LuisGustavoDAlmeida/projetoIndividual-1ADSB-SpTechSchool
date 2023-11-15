@@ -1,26 +1,26 @@
 @font-face {
-    src: url(./fonts/corp.ttf);
+    src: url(../assets/fonts/corp.ttf);
     font-family: comics-font;
 }
 
 @font-face {
     font-family: adam-Warren;
-    src: url(./fonts/adam-warren-pro/adamwarrenpro-bold.ttf);
+    src: url(../assets/fonts/adam-warren-pro/adamwarrenpro-bold.ttf);
 }
 
 @font-face {
     font-family: kalam;
-    src: url(./fonts/Kalam/Kalam-Bold.ttf);
+    src: url(../assets/fonts/Kalam/Kalam-Bold.ttf);
 }
 
 @font-face {
     font-family: burton;
-    src: url(./fonts/burtons_nightmare/NITEMARE.TTF);
+    src: url(../assets/fonts/burtons_nightmare/NITEMARE.TTF);
 }
 
 @font-face {
     font-family: trajan;
-    src: url(./fonts/trajan-bold/Trajan\ Bold.ttf);
+    src: url(../assets/fonts/trajan-bold/Trajan\ Bold.ttf);
 }
 
 * {
@@ -75,7 +75,7 @@ section {
 /* Parallax effect for all sections */
 
 .selection-screen {
-    background: url(./images/frankMillerBatman.png);
+    background: url(../assets/imgs/wayneManor/frankMillerBatman.png);
     background-position: bottom;
     background-size: cover;
     display: flex;
@@ -273,7 +273,7 @@ h2 {
 
 
 .films {
-    background-image: url(./images/Wallpaper-Batman-Illustration-Batman-Begins-The-Dark-Kni10.jpg);
+    background-image: url(../assets/imgs/wayneManor/Wallpaper-Batman-Illustration-Batman-Begins-The-Dark-Kni10.jpg);
     min-height: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -297,26 +297,26 @@ h2 {
 
 .film1 {
     border: 5px solid greenyellow;
-    background-image: url(./images/batmanBeginsSymbol.jpg);
+    background-image: url(../assets/imgs/wayneManor/batmanBeginsSymbol.jpg);
 }
 
 .film2 {
     border: 5px solid fuchsia;
-    background-image: url(./images/batmanDarkKnightSymbol.jpg);
+    background-image: url(../assets/imgs/wayneManor/batmanDarkKnightSymbol.jpg);
 }
 
 .film3 {
     border: 5px solid firebrick;
-    background-image: url(./images/batmanDarkNightRisesSymbol.jpg);
+    background-image: url(../assets/imgs/wayneManor/batmanDarkNightRisesSymbol.jpg);
 }
 
 .film4 {
     border: 5px solid hotpink;
-    background-image: url(./images/theBatman2022.jpg);
+    background-image: url(../assets/imgs/wayneManor/theBatman2022.jpg);
 }
 
 .register {
-    background-image: url(./images/arkhamCityRegister.jpg);
+    background-image: url(../assets/imgs/wayneManor/arkhamCityRegister.jpg);
     display: flex;
     justify-content: right;
     align-items: center;
@@ -379,7 +379,7 @@ h2 {
 }
 
 .login {
-    background-image: url(./images/arkhamCityLogin.jpg);
+    background-image: url(../assets/imgs/wayneManor/arkhamCityLogin.jpg);
     display: flex;
     justify-content: left;
     align-items: center;

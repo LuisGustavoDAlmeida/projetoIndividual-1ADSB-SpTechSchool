@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url(./Images/batCaveBackground.jpg);
+    background-image: url(../assets/imgs/chooseScreen/batCaveBackground.jpg);
     background-position: center;
     background-size: cover;
     width: 100vw;
@@ -39,7 +39,7 @@ main {
     height: 500px;
     border: 10px outset black;
     border-radius: 50px;
-    background-image: url(./Images/batComputer.png);
+    background-image: url(../assets/imgs/chooseScreen/batComputer.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
