@@ -13,6 +13,16 @@
     src: url(./fonts/Kalam/Kalam-Bold.ttf);
 }
 
+@font-face {
+    font-family: burton;
+    src: url(./fonts/burtons_nightmare/NITEMARE.TTF);
+}
+
+@font-face {
+    font-family: trajan;
+    src: url(./fonts/trajan-bold/Trajan\ Bold.ttf);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -20,6 +30,10 @@
     text-decoration: none;
     text-anchor: none;
     list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /*======================================== GLOBAL CONFIGS */
@@ -31,6 +45,16 @@ section {
 
 /* Settings for all sections */
 
+.parallax {
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Parallax effect for all sections */
+
 .selection-screen {
     background: url(./images/frankMillerBatman.png);
     background-position: bottom;
@@ -38,7 +62,12 @@ section {
     display: flex;
     justify-content: flex-end;
     font-family: comics-font;
-    border: 5px solid red;
+    /* PARALAX EFFECT */
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -66,7 +95,6 @@ section {
 .container .nav {
     width: 100%;
     height: 100%;
-    border: 5px solid red;
 }
 
 .container .nav ol {
@@ -118,7 +146,6 @@ section {
     display: flex;
     justify-content: space-around;
     padding: 15px;
-    /* border: 5px solid gainsboro; */
 }
 
 .comics-history .container2 .comics1 {
@@ -126,63 +153,270 @@ section {
     width: 35%;
     height: 100%;
     padding: 5px;
-    /* border: 5px solid firebrick; */
 }
 
 .comics-history .container2 .comics1 .gotham-image {
     width: 100%;
     height: 50%;
     position: relative;
-    /* border: 5px solid rebeccapurple; */
 }
 
 .comics-history .container2 .comics1 .bruce-parents {
     display: flex;
     justify-content: space-between;
-    /* border: 5px solid palevioletred; */
     height: 50%;
-} 
+    opacity: 0;
+    transition: opacity 1s linear;
+}
 
-.comics-history .container2 .comics1 .bruce-parents .martha-image{
+.comics-history .container2 .comics1 .bruce-parents .martha-image {
     position: relative;
 }
 
-.comics-history .container2 .comics1 .bruce-parents .thomas-image{
+.comics-history .container2 .comics1 .bruce-parents .thomas-image {
     position: relative
 }
-
-.comics-history .container2 .comics1 .bruce-parents img {
-    width: 100%;
-    height: 100%;
-}  
 
 .comics-history .container2 .comics2 {
     display: inline-block;
     width: 60%;
     height: 100%;
     padding: 5px;
-    /* border: 5px solid blue; */
 }
 
 .comics-history .container2 .comics2 .death-image {
     width: 100%;
     height: 50%;
     position: relative;
-    /* border: 5px solid rebeccapurple; */
+    opacity: 0;
+    transition: opacity 1s linear;
 }
 
 .comics-history .container2 .comics2 .batman-image {
     width: 100%;
     height: 50%;
     position: relative;
-    /* border: 5px solid cornflowerblue; */
+    opacity: 0;
+    transition: opacity 1s linear;
 }
 
-.death-image .overlay {
+.overlay {
     position: absolute;
-    text-align: center;
     top: 0;
-    left: 0;
-    border: 5px solid rebeccapurple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    cursor: default;
 }
 
+.overlay:hover {
+    background-color: black;
+    opacity: 0.8;
+}
+
+.overlay-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid white;
+    padding: 20px;
+    gap: 30px;
+    word-break: break-all;
+}
+
+h1 {
+    font-size: 1.5em;
+    width: 100%;
+}
+
+h2 {
+    font-size: 1em;
+    width: 100%;
+}
+
+.on {
+    opacity: 1 !important;
+    display: flex !important;
+}
+
+/*======================================== SECTION 3 */
+
+
+.films {
+    background-image: url(./images/Wallpaper-Batman-Illustration-Batman-Begins-The-Dark-Kni10.jpg);
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid red;
+}
+
+.films .title {
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    font-size: 50px;
+    font-family: burton;
+    font-weight: bolder;
+    letter-spacing: 50px;
+    -webkit-box-reflect: below -0px linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+.film1 {
+    border: 5px solid greenyellow;
+    background-image: url(./images/batmanBeginsSymbol.jpg);
+}
+
+.film2 {
+    border: 5px solid fuchsia;
+    background-image: url(./images/batmanDarkKnightSymbol.jpg);
+}
+
+.film3 {
+    border: 5px solid firebrick;
+    background-image: url(./images/batmanDarkNightRisesSymbol.jpg);
+}
+
+.film4 {
+    border: 5px solid hotpink;
+    background-image: url(./images/theBatman2022.jpg);
+}
+
+.register {
+    background-image: url(./images/arkhamCityRegister.jpg);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-family: trajan;
+}
+
+.register .register-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    margin: 5%;
+    text-align: center;
+    gap: 30px;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(255, 0, 0, 1);
+    padding: 25px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.register .register-area h1 {
+    font-size: 35px;
+}
+
+.register .register-area .register-fields {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    gap: 8px;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+}
+
+.register .register-area .register-fields input {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    text-align: center;
+    height: 30px;
+    width: 75%;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.register .register-area .register-fields button {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    height: 30px;
+    width: 50%;
+    margin-top: 15px;
+    background-color: rgba(255, 1, 1, 0.7);
+    color: white;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.login {
+    background-image: url(./images/arkhamCityLogin.jpg);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: trajan;
+}
+
+.login .login-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    gap: 30px;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(255, 0, 0, 1);
+    padding: 25px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.login .login-area h1 {
+    font-size: 35px;
+}
+
+.login .login-area .login-fields {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    gap: 8px;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+}
+
+.login .login-area .login-fields input {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    text-align: center;
+    height: 30px;
+    width: 75%;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.login .login-area .login-fields button {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    height: 30px;
+    width: 50%;
+    margin-top: 15px;
+    background-color: rgba(255, 1, 1, 0.7);
+    color: white;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    cursor: pointer;
+}
