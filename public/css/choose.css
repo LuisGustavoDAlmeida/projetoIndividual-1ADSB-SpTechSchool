@@ -19,6 +19,7 @@ main {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    flex-wrap: wrap;
 }
 
 .container-slider {
@@ -72,12 +73,6 @@ main {
     cursor: pointer;
     padding: 5px;
     margin: 30px;
-}
-
-#prevButton:hover,
-#nextButton:hover {
-    width: 85px;
-    height: 55px;
 }
 
 #prevButton img,
