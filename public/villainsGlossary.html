@@ -66,9 +66,9 @@
                     <!-- Pinguim -->
                     <img src="./assets/imgs/villainsGlossary/penguinicon.png" alt="">
                 </li>
-                <li class="character" id="blackmask">
+                <li class="character" id="rasAlGhul">
                     <!-- Máscara Negra -->
-                    <img src="./assets/imgs/villainsGlossary/blackMaskIcon.webp" alt="">
+                    <img src="./assets/imgs/villainsGlossary/rasIcon.png" alt="">
                 </li>
                 <li class="character" id="victor">
                     <!-- Victor Zsasz -->
@@ -89,32 +89,37 @@
             </ul>
             <div class="description">
                 <div class="description-text">
-                    <h1 style="color: white;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam at alias
-                        eligendi placeat laudantium voluptate, nisi, numquam laboriosam enim veritatis, fugiat quibusdam
-                        illo reiciendis cum odit officiis maxime consequatur rem! Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit. Recusandae consequatur praesentium quia aspernatur est architecto,
-                        blanditiis in sint voluptatem, quasi nostrum, aut amet iure explicabo ad adipisci id veritatis
-                        velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quis possimus esse maiores
-                        saepe placeat illo ipsam mollitia, nesciunt, ducimus sed temporibus suscipit debitis vel
-                        architecto. Repudiandae minus sapiente nihil! Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Iusto sed minus recusandae voluptates quae magni nihil, et adipisci explicabo aliquam sit,
-                        id autem voluptas error dolorem? Magni repellendus rem quaerat!</h1>
+                    <h1 id="textCharacter">Coloque o Mouse em um dos perosnagens</h1>
                 </div>
                 <div class="character-selected">
-                    <img src="./assets/imgs/villainsGlossary/jokerLarge.webp" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/harleyQueenLarge.webp" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/twoFaceLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/scarecrowLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/killerCrocLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/riddlerLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/mrFreezeLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/baneLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/penguinLarge.webp" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/blackMaskLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/victorLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/deadShotLarge.png" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/deathStrokeLarge.webp" alt="" class="character-large">
-                    <img src="./assets/imgs/villainsGlossary/catWomanLarge.png" alt="" class="character-large">
+                    <img src="./assets/imgs/villainsGlossary/jokerLarge.webp" alt="" class="character-large noselected"
+                        id="jokerLarge">
+                    <img src="./assets/imgs/villainsGlossary/harleyQueenLarge.webp" alt=""
+                        class="character-large noselected" id="harleyLarge">
+                    <img src="./assets/imgs/villainsGlossary/twoFaceLarge.png" alt="" class="character-large noselected"
+                        id="twoFaceLarge">
+                    <img src="./assets/imgs/villainsGlossary/scarecrowLarge.png" alt=""
+                        class="character-large noselected" id="scarecrowLarge">
+                    <img src="./assets/imgs/villainsGlossary/killerCrocLarge.png" alt=""
+                        class="character-large noselected" id="killerLarge">
+                    <img src="./assets/imgs/villainsGlossary/riddlerLarge.png" alt="" class="character-large noselected"
+                        id="riddlerLarge">
+                    <img src="./assets/imgs/villainsGlossary/mrFreezeLarge.png" alt=""
+                        class="character-large noselected" id="freezeLarge">
+                    <img src="./assets/imgs/villainsGlossary/baneLarge2.webp" alt="" class="character-large noselected"
+                        id="baneLarge">
+                    <img src="./assets/imgs/villainsGlossary/penguinLarge.png" alt="" class="character-large noselected"
+                        id="penguinLarge">
+                    <img src="./assets/imgs/villainsGlossary/rasLarge.png" alt="" class="character-large noselected"
+                        id="blackLarge">
+                    <img src="./assets/imgs/villainsGlossary/victorLarge.png" alt="" class="character-large noselected"
+                        id="victorLarge">
+                    <img src="./assets/imgs/villainsGlossary/deadShotLarge.png" alt=""
+                        class="character-large noselected" id="deadshotLarge">
+                    <img src="./assets/imgs/villainsGlossary/deathStrokeLarge.webp" alt=""
+                        class="character-large noselected" id="deathstrokeLarge">
+                    <img src="./assets/imgs/villainsGlossary/catWomanLarge.png" alt=""
+                        class="character-large noselected" id="catLarge">
                 </div>
             </div>
         </section>
@@ -127,69 +132,114 @@
     const asylum = document.querySelector("#arkham");
     const prision = document.querySelector("#blackGate");
     const glossary = document.querySelector(".villain-glossary");
-    console.log (glossary);
     let character = document.querySelectorAll(".character");
     let characterLarge = document.querySelectorAll(".character-large");
-    // asylum.addEventListener("click", function () {
-    //     asylum.classList.add("animation");
-    //     // prision.classList.remove("animation");
-    // })
-    // prision.addEventListener("click", function () {
-    //     asylum.classList.remove("animation");
-    //     prision.classList.add("animation");
-    // })
+    console.log(character);
+    var actualCharacter = 0;
     character.forEach(character => {
         character.addEventListener("mouseenter", function () {
-            console.log("Mouse na div");
-            // character.forEach(char => {
-            //     char.classList.remove("selected");
-            // }); /* To remove the border */
-            if (character.id === 'joker') {
-                character.classList.add("selected")
-                console.log("Joker");
-                
-            } else if (character.id === 'harley') {
-                character.classList.add("selected")
-                console.log("Harley");
-            } else if (character.id === 'twoface') {
-                character.classList.add("selected")
-                console.log("Duas Caras");
-            } else if (character.id === 'scarecrow') {
-                character.classList.add("selected")
-                console.log("Espantalho");
-            } else if (character.id === 'killercroc') {
-                character.classList.add("selected")
-                console.log("Crocodilo");
-            } else if (character.id === 'riddler') {
-                character.classList.add("selected")
-                console.log("Charada");
-            } else if (character.id === 'mrfreeze') {
-                character.classList.add("selected")
-                console.log("MrFreeze");
-            } else if (character.id === 'bane') {
-                character.classList.add("selected")
-                console.log("Bane");
-            } else if (character.id === 'penguin') {
-                character.classList.add("selected")
-                console.log("Pinguim");
-            } else if (character.id === 'blackmask') {
-                character.classList.add("selected")
-                console.log("Máscara Negra");
-            } else if (character.id === 'victor') {
-                character.classList.add("selected")
-                console.log("Victor");
-            } else if (character.id === 'deadshot') {
-                character.classList.add("selected")
-                console.log("Pistoleiro");
-            } else if (character.id === 'deathstroke') {
-                character.classList.add("selected")
-                console.log("Exterminador");
-            } else if (character.id === 'catwoman') {
-                character.classList.add("selected")
-                console.log("Mulher Gato");
-            } 
+            console.log(characterLarge.length);
+            for (var i = 0; i < characterLarge.length; i++) {
+                if (i != actualCharacter) {
+                    characterLarge[i].style.display = "none";
+                } else {
+                    characterLarge[i].style.display = "block";
+                }
+                if (character.id === 'joker' && characterLarge[0]) {
+                    actualCharacter = 0;
+                    characterLarge[0].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                } else if (character.id === 'harley' && characterLarge[1]) {
+                    actualCharacter = 1;
+                    characterLarge[1].style.display = "block";
+                    console.log("Harley");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                } else if (character.id === 'twoface' && characterLarge[2]) {
+                    actualCharacter = 2;
+                    characterLarge[2].style.display = "block";
+                    console.log("Duas Caras");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'scarecrow' && characterLarge[3]) {
+                    actualCharacter = 3;
+                    characterLarge[3].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Espantalho");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'killercroc' && characterLarge[4]) {
+                    actualCharacter = 4;
+                    characterLarge[4].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Crocodilo");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'riddler' && characterLarge[5]) {
+                    actualCharacter = 5;
+                    characterLarge[5].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Charada");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'mrfreeze' && characterLarge[6]) {
+                    actualCharacter = 6;
+                    characterLarge[6].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("MrFreeze");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'bane' && characterLarge[7]) {
+                    actualCharacter = 7;
+                    characterLarge[7].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Bane");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'penguin' && characterLarge[8]) {
+                    actualCharacter = 8;
+                    characterLarge[8].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Pinguim");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'rasAlGhul' && characterLarge[9]) {
+                    actualCharacter = 9;
+                    characterLarge[9].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Máscara Negra");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'victor' && characterLarge[10]) {
+                    actualCharacter = 10;
+                    characterLarge[10].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Victor");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'deadshot' && characterLarge[11]) {
+                    actualCharacter = 11;
+                    characterLarge[11].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Pistoleiro");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'deathstroke' && characterLarge[12]) {
+                    actualCharacter = 12;
+                    characterLarge[12].style.display = "block";
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    console.log("Exterminador");
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+
+                } else if (character.id === 'catwoman' && characterLarge[13]) {
+                    actualCharacter = 13;
+                    characterLarge[13].style.display = "block";
+                    console.log("Mulher Gato" && characterLarge[13]);
+                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                }
+            }
         })
     })
+
 
 
 

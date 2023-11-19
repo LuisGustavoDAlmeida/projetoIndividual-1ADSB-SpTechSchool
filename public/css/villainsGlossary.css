@@ -86,11 +86,10 @@ arkham-asylum:hover {
 }
 
 .villain-glossary .character-list {
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 65%;
     flex-wrap: wrap;
-    gap: 5px;
-    /* border: 5px solid firebrick; */
     position: relative;
     z-index: 1;
 }
@@ -105,19 +104,17 @@ arkham-asylum:hover {
     transition: 0.2s;
     width: 7.5em;
     height: 7.5em;
-    border: 5px solid blue;
 }
 
 .villain-glossary .description {
     display: flex;
     height: 65%;
-    /* border: 5px solid blue; */
 }
 
 .villain-glossary .description .description-text {
     height: 100%;
     width: 65%;
-    border: 5px solid blueviolet;
+    color: white;
 }
 
 .villain-glossary .description .character-selected {
@@ -126,18 +123,12 @@ arkham-asylum:hover {
     position: absolute;
     top: 0;
     right: 0;
-    /* border: 5px solid yellow; */
-    opacity: 1;
     z-index: 0;
 }
 
 .villain-glossary .description .character-selected .character-large {
     width: 100%;
     height: 100%;
-    /* border: 5px solid indigo; */
+    display: none;
+    transition: 1s;
 }
-
-
-/* .selected {
-    border: 5px solid blue;
-} */
