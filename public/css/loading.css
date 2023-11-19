@@ -16,7 +16,7 @@ main {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-image: url(./Imagens/rainBackground.png); 
+    background-image: url(../assets/imgs/loadingScreen/rainBackground.png); 
     background-size: cover;
     content: '';
     position: absolute;
@@ -36,7 +36,7 @@ main::before {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(./Imagens/gothamLightning.png);
+    background-image: url(../assets/imgs/loadingScreen/gothamLightning.png);
     background-size: cover;
     z-index: -1;
     animation: lightning 15s forwards infinite;
