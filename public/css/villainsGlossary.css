@@ -3,6 +3,16 @@
     src: url(../assets/fonts/burtons_nightmare/NITEMARE.TTF);
 }
 
+@font-face {
+    font-family: trajan;
+    src: url(../assets/fonts/trajan-bold/Trajan\ Bold.ttf);
+}
+
+@font-face {
+    src: url(../assets/fonts/riffic-bold/Riffic-Bold/riffic.ttf);
+    font-family: riffic;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -19,6 +29,14 @@ html {
 section {
     /* width: 100vw; */
     height: 100vh;
+}
+
+.parallax {
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Settings for all sections */
@@ -80,9 +98,12 @@ arkham-asylum:hover {
 }
 
 /*====================================================================================== SECTION 2 */
+
 .villain-glossary {
     background-color: black;
+    background-image: url();
     position: relative;
+    font-family: trajan;
 }
 
 .villain-glossary .character-list {
@@ -97,18 +118,21 @@ arkham-asylum:hover {
 .villain-glossary .character-list .character img {
     width: 7em;
     height: 7em;
-    border: 5px solid gainsboro;
+    border: 5px solid rgba(255, 255, 255, 0.2);
 }
 
 .villain-glossary .character-list .character img:hover {
-    transition: 0.2s;
+    transition: 0.3s;
     width: 7.5em;
     height: 7.5em;
+    border: 5px solid rgba(242, 255, 4, 0.8);
 }
 
 .villain-glossary .description {
     display: flex;
     height: 65%;
+    /* justify-content: center; */
+    border: 5px solid floralwhite;
 }
 
 .villain-glossary .description .description-text {
@@ -121,9 +145,19 @@ arkham-asylum:hover {
     height: 100%;
     width: 40%;
     position: absolute;
+    display: flex;
+    justify-content: center;
     top: 0;
     right: 0;
     z-index: 0;
+}
+
+.character-selected .character-name {
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    position: absolute;
+    font-size: 3.5em;
+    bottom: 0;
 }
 
 .villain-glossary .description .character-selected .character-large {
@@ -131,4 +165,20 @@ arkham-asylum:hover {
     height: 100%;
     display: none;
     transition: 1s;
+}
+
+#textCharacter {
+    border: 5px solid red;
+    background-color: rgba(0, 0, 0, 0.6);
+    text-shadow: 3px 3px 3px black;
+    text-align: center;
+    border-radius: 10%;
+    height: 100%;
+    width: 90%;
+    margin-left: 50px;
+    font-family: riffic;
+}
+
+#characterName {
+    border-bottom: 5px solid white;
 }

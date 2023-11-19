@@ -28,7 +28,7 @@
                 </h1>
             </div>
         </section>
-        <section class="villain-glossary">
+        <section class="villain-glossary parallax">
             <ul class="character-list">
                 <li class="character" id="joker">
                     <!-- Coringa -->
@@ -92,34 +92,35 @@
                     <h1 id="textCharacter">Coloque o Mouse em um dos perosnagens</h1>
                 </div>
                 <div class="character-selected">
-                    <img src="./assets/imgs/villainsGlossary/jokerLarge.webp" alt="" class="character-large noselected"
+                    <h1 class="character-name" id="characterName">CHARADA</h1>
+                    <img src="./assets/imgs/villainsGlossary/jokerLarge.webp" alt="" class="character-large "
                         id="jokerLarge">
                     <img src="./assets/imgs/villainsGlossary/harleyQueenLarge.webp" alt=""
-                        class="character-large noselected" id="harleyLarge">
-                    <img src="./assets/imgs/villainsGlossary/twoFaceLarge.png" alt="" class="character-large noselected"
+                        class="character-large " id="harleyLarge">
+                    <img src="./assets/imgs/villainsGlossary/twoFaceLarge.png" alt="" class="character-large "
                         id="twoFaceLarge">
                     <img src="./assets/imgs/villainsGlossary/scarecrowLarge.png" alt=""
-                        class="character-large noselected" id="scarecrowLarge">
+                        class="character-large " id="scarecrowLarge">
                     <img src="./assets/imgs/villainsGlossary/killerCrocLarge.png" alt=""
-                        class="character-large noselected" id="killerLarge">
-                    <img src="./assets/imgs/villainsGlossary/riddlerLarge.png" alt="" class="character-large noselected"
+                        class="character-large " id="killerLarge">
+                    <img src="./assets/imgs/villainsGlossary/riddlerLarge.png" alt="" class="character-large "
                         id="riddlerLarge">
                     <img src="./assets/imgs/villainsGlossary/mrFreezeLarge.png" alt=""
-                        class="character-large noselected" id="freezeLarge">
-                    <img src="./assets/imgs/villainsGlossary/baneLarge2.webp" alt="" class="character-large noselected"
+                        class="character-large " id="freezeLarge">
+                    <img src="./assets/imgs/villainsGlossary/baneLarge2.webp" alt="" class="character-large "
                         id="baneLarge">
-                    <img src="./assets/imgs/villainsGlossary/penguinLarge.png" alt="" class="character-large noselected"
+                    <img src="./assets/imgs/villainsGlossary/penguinLarge.png" alt="" class="character-large "
                         id="penguinLarge">
-                    <img src="./assets/imgs/villainsGlossary/rasLarge.png" alt="" class="character-large noselected"
+                    <img src="./assets/imgs/villainsGlossary/rasLarge.png" alt="" class="character-large "
                         id="blackLarge">
-                    <img src="./assets/imgs/villainsGlossary/victorLarge.png" alt="" class="character-large noselected"
+                    <img src="./assets/imgs/villainsGlossary/victorLarge.png" alt="" class="character-large "
                         id="victorLarge">
                     <img src="./assets/imgs/villainsGlossary/deadShotLarge.png" alt=""
-                        class="character-large noselected" id="deadshotLarge">
+                        class="character-large " id="deadshotLarge">
                     <img src="./assets/imgs/villainsGlossary/deathStrokeLarge.webp" alt=""
-                        class="character-large noselected" id="deathstrokeLarge">
+                        class="character-large " id="deathstrokeLarge">
                     <img src="./assets/imgs/villainsGlossary/catWomanLarge.png" alt=""
-                        class="character-large noselected" id="catLarge">
+                        class="character-large " id="catLarge">
                 </div>
             </div>
         </section>
@@ -142,100 +143,113 @@
             for (var i = 0; i < characterLarge.length; i++) {
                 if (i != actualCharacter) {
                     characterLarge[i].style.display = "none";
-                } else {
+                }  else {
                     characterLarge[i].style.display = "block";
                 }
                 if (character.id === 'joker' && characterLarge[0]) {
                     actualCharacter = 0;
                     characterLarge[0].style.display = "block";
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    characterName.innerHTML = `Coringa`;
+                    textCharacter.innerHTML = `FICHA CRIMINAL #1 <br>
+
+Nome Real: ??? <br>
+
+Primeira aparição: BATMAN #1 (1940) <br>
+
+Poderes: Totalmente imprevisível, agente do caos, armas customizadas, toxina mortal que matam as vítimas com risadas <br> <br>
+
+Descrição: 
+`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/jokerBackground.webp`
                 } else if (character.id === 'harley' && characterLarge[1]) {
                     actualCharacter = 1;
                     characterLarge[1].style.display = "block";
-                    console.log("Harley");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    characterName.innerHTML = `Harley Quinn`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/harleyBackground.webp`
                 } else if (character.id === 'twoface' && characterLarge[2]) {
                     actualCharacter = 2;
                     characterLarge[2].style.display = "block";
                     console.log("Duas Caras");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    characterName.innerHTML = `Duas Caras`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/twofaceBackground.jpg`
 
                 } else if (character.id === 'scarecrow' && characterLarge[3]) {
                     actualCharacter = 3;
                     characterLarge[3].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
                     console.log("Espantalho");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Espantalho`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/scarecrowBackground.webp`
                 } else if (character.id === 'killercroc' && characterLarge[4]) {
                     actualCharacter = 4;
                     characterLarge[4].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
                     console.log("Crocodilo");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Crocodilo`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/killerBackground.jpg`
                 } else if (character.id === 'riddler' && characterLarge[5]) {
                     actualCharacter = 5;
                     characterLarge[5].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
                     console.log("Charada");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Charada`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/riddlerBackground.jpg)`;
                 } else if (character.id === 'mrfreeze' && characterLarge[6]) {
                     actualCharacter = 6;
                     characterLarge[6].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
                     console.log("MrFreeze");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Sr Frio`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/freezeBackground.webp`
                 } else if (character.id === 'bane' && characterLarge[7]) {
                     actualCharacter = 7;
                     characterLarge[7].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
                     console.log("Bane");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
+                    characterName.innerHTML = `Bane`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/baneBackground.jpg!d`
 
                 } else if (character.id === 'penguin' && characterLarge[8]) {
                     actualCharacter = 8;
                     characterLarge[8].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
                     console.log("Pinguim");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Pinguim`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/penguinBackground.jpg)`;
                 } else if (character.id === 'rasAlGhul' && characterLarge[9]) {
                     actualCharacter = 9;
                     characterLarge[9].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-                    console.log("Máscara Negra");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Ras Al Ghul`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/rasBackground.jpeg`
                 } else if (character.id === 'victor' && characterLarge[10]) {
                     actualCharacter = 10;
                     characterLarge[10].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-                    console.log("Victor");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Victor Zsasz`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/victorBackground.jpg`
                 } else if (character.id === 'deadshot' && characterLarge[11]) {
                     actualCharacter = 11;
                     characterLarge[11].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
                     console.log("Pistoleiro");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    textCharacter.innerHTML = `aaaaaaaaaaaaa`;
+                    characterName.innerHTML = `Pistoleiro`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/deadshotBackground.jpg`
                 } else if (character.id === 'deathstroke' && characterLarge[12]) {
                     actualCharacter = 12;
                     characterLarge[12].style.display = "block";
                     textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-                    console.log("Exterminador");
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-
+                    characterName.innerHTML = `Exterminador`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/deathstrokeBackground.webp`
                 } else if (character.id === 'catwoman' && characterLarge[13]) {
                     actualCharacter = 13;
                     characterLarge[13].style.display = "block";
                     console.log("Mulher Gato" && characterLarge[13]);
-                    textCharacter.innerHTML = `aaaaaaaaaaaaaaaaaaaa`;
-                }
+                    textCharacter.innerHTML = `aaaaaa`;
+                    characterName.innerHTML = `Mulher Gato`;
+                    glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/catwomanBackground.webp`
+                } 
             }
         })
     })
