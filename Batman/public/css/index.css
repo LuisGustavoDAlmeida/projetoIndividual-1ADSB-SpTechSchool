@@ -1,0 +1,855 @@
+@font-face {
+    src: url(../assets/fonts/corp.ttf);
+    font-family: comics-font;
+}
+
+@font-face {
+    font-family: adam-Warren;
+    src: url(../assets/fonts/adam-warren-pro/adamwarrenpro-bold.ttf);
+}
+
+@font-face {
+    font-family: kalam;
+    src: url(../assets/fonts/Kalam/Kalam-Bold.ttf);
+}
+
+@font-face {
+    font-family: burton;
+    src: url(../assets/fonts/burtons_nightmare/NITEMARE.TTF);
+}
+
+@font-face {
+    font-family: trajan;
+    src: url(../assets/fonts/trajan-bold/Trajan\ Bold.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-anchor: none;
+    list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1)
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.8)
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*======================================== GLOBAL CONFIGS */
+
+section {
+    /* width: 100vw; */
+    height: 100vh;
+}
+
+/* Settings for all sections */
+
+.parallax {
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Parallax effect for all sections */
+
+.selection-screen {
+    background: url(../assets/imgs/wayneManor/frankMillerBatman.png);
+    background-position: bottom;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    font-family: comics-font;
+    /* PARALAX EFFECT */
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20%;
+}
+
+.container .title {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    width: 85%;
+    height: 45%;
+    background: rgba(0, 0, 0, 0.45);
+    text-shadow: 3px 3px 3px black;
+}
+
+.container .title h1 {
+    color: whitesmoke;
+    font-size: 50px;
+}
+
+.container .nav {
+    width: 100%;
+    height: 100%;
+}
+
+.container .nav ol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.container .nav ol li span {
+    opacity: 50%;
+    font-size: 50px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.container .nav ol li span:hover {
+    opacity: 1;
+    font-size: 55px;
+}
+
+/*======================================== SECTION 2 */
+.comics-history {
+    background-color: #232834;
+    font-family: adam-Warren;
+    height: 100vh;
+}
+
+.comics-image {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 5px solid #4A5575;
+}
+
+/* Settings for all images */
+
+.comics-history h1 {
+    font-family: adam-Warren;
+}
+
+.comics-history h2 {
+    font-family: kalam;
+}
+
+.comics-history .container2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+}
+
+.comics-history .container2 .comics1 {
+    display: inline-block;
+    width: 35%;
+    height: 100%;
+    padding: 5px;
+}
+
+.comics-history .container2 .comics1 .gotham-image {
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+.comics-history .container2 .comics1 .bruce-parents {
+    display: flex;
+    justify-content: space-between;
+    height: 50%;
+    opacity: 0;
+    transition: opacity 1s linear;
+}
+
+.comics-history .container2 .comics1 .bruce-parents .martha-image {
+    position: relative;
+}
+
+.comics-history .container2 .comics1 .bruce-parents .thomas-image {
+    position: relative
+}
+
+.comics-history .container2 .comics2 {
+    display: inline-block;
+    width: 60%;
+    height: 100%;
+    padding: 5px;
+}
+
+.comics-history .container2 .comics2 .death-image {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s linear;
+}
+
+.comics-history .container2 .comics2 .batman-image {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s linear;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+    cursor: default;
+}
+
+.overlay:hover {
+    background-color: black;
+    opacity: 0.8;
+}
+
+.overlay-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid white;
+    padding: 20px;
+    gap: 30px;
+    word-break: break-all;
+}
+
+h1 {
+    font-size: 1.5em;
+    width: 100%;
+}
+
+h2 {
+    font-size: 1em;
+    width: 100%;
+}
+
+.on {
+    opacity: 1 !important;
+    display: flex !important;
+}
+
+/*======================================== SECTION 3 */
+
+.films {
+    background-image: url(../assets/imgs/wayneManor/Wallpaper-Batman-Illustration-Batman-Begins-The-Dark-Kni10.jpg);
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid red;
+}
+
+.films .title {
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    font-size: 50px;
+    font-family: burton;
+    font-weight: bolder;
+    letter-spacing: 50px;
+    -webkit-box-reflect: below -0px linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+.film1 {
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/imgs/wayneManor/batmanBeginsSymbol.jpg);
+}
+
+.film1 .begins {
+    border: 5px solid red;
+    display: inline;
+    width: 90%;
+    background: linear-gradient(180deg, rgba(231, 208, 184, 0.25) 6.25%, rgba(163, 106, 53, 0.25) 26.04%, rgba(76, 29, 14, 0.25) 46.35%, rgba(13, 3, 1, 0.8) 83.33%);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.film1 .begins .top-film {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.film1 .begins .top-film .phrase {
+    width: 50%;
+    height: 100%;
+    font-size: 2.2em;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    text-align: center;
+}
+
+.film1 .begins .top-film .image {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/imgs/wayneManor/batmanBegins.jpg);
+    background-size: cover;
+    background-position: right;
+}
+
+.film1 .begins .characters {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.film1 .begins .characters .cast {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.film1 .begins .characters .cast h1 {
+    font-size: 1em;
+    height: 100%;
+    text-shadow: 3px 3px 3px black;
+}
+
+.film1 .begins .characters .cast .character {
+    width: 80%;
+    height: 75%;
+    background-size: cover;
+    border: 5px solid rgba(76, 29, 14, 0.8) ;
+    transition: 1s;
+}
+
+.film1 .begins .characters .cast:nth-child(1) .character {
+    background: url(../assets/imgs/wayneManor/Christian\ Bale.jpg) center/cover no-repeat;
+}
+
+.film1 .begins .characters .cast:nth-child(1) .character:hover {
+    background: url(../assets/imgs/wayneManor/Bale\ Batman\ Begins.jpg) center/cover no-repeat;
+    width: 90%;
+}
+
+.film1 .begins .characters .cast:nth-child(2) .character {
+    background: url(../assets/imgs/wayneManor/Liam\ Neeson\ Ras.webp) center/cover no-repeat;
+}
+
+.film1 .begins .characters .cast:nth-child(2) .character:hover {
+    background: url(../assets/imgs/wayneManor/Liam\ Ras.png) center/cover no-repeat;
+    width: 90%;
+}
+
+.film1 .begins .characters .cast:nth-child(3) .character {
+    background: url(../assets/imgs/wayneManor/Cillian\ Murphy\ Scarecrow.jpg) center/cover no-repeat;
+}
+
+.film1 .begins .characters .cast:nth-child(3) .character:hover {
+    background: url(../assets/imgs/wayneManor/scarecrowCillianMurphy.jpg) center/cover no-repeat;
+    width: 90%;
+}
+
+.film1 .begins .characters .cast .description {
+    width: 100%;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    /* border: 5px solid lime; */
+}
+
+.film1 .begins .trailer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 5px teal;
+}
+
+/*======================================== FILM 2 */
+.film2 {
+    border: 5px solid fuchsia;
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/imgs/wayneManor/batmanDarkKnightSymbol.jpg);
+}
+
+.film2 .dark-knight {
+    border: 5px solid red;
+    display: inline;
+    width: 90%;
+    background: linear-gradient(180deg, rgba(114, 169, 180, 0.25) 6.25%, rgba(69, 117, 133, 0.25) 26.04%, rgba(21, 72, 93, 0.25) 46.35%, rgba(7, 20, 32, 0.8) 83.33%);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.film2 .dark-knight .top-film {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.film2 .dark-knight .top-film .phrase {
+    width: 50%;
+    height: 100%;
+    font-size: 2em;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    text-align: center;
+}
+
+.film2 .dark-knight .top-film .image {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/imgs/wayneManor/batmanDarkKnightTop.jpg);
+    background-size: cover;
+    background-position: right;
+}
+
+.film2 .dark-knight .characters {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.film2 .dark-knight .characters .cast {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.film2 .dark-knight .characters .cast h1 {
+    font-size: 1em;
+    height: 100%;
+    text-shadow: 3px 3px 3px black;
+}
+
+.film2 .dark-knight .characters .cast .character {
+    width: 80%;
+    height: 75%;
+    background-size: cover;
+    transition: 1s;
+    border: 5px solid rgba(193, 49, 34, 1)
+}
+
+.film2 .dark-knight .characters .cast:nth-child(1) .character {
+    background: url(../assets/imgs/wayneManor/Christian\ Bale\ 2.jpg) center/cover no-repeat;
+}
+
+.film2 .dark-knight .characters .cast:nth-child(1) .character:hover {
+    background: url(../assets/imgs/wayneManor/batman\ dark\ knight.webp) center/cover no-repeat;
+    width: 90%;
+}
+
+.film2 .dark-knight .characters .cast:nth-child(2) .character {
+    background: url(../assets/imgs/wayneManor/heathLedger.jpg) center/cover no-repeat;
+}
+
+.film2 .dark-knight .characters .cast:nth-child(2) .character:hover {
+    background: url(../assets/imgs/wayneManor/joker\ dark\ knight.jpg) center/cover no-repeat;
+    width: 90%;
+}
+
+.film2 .dark-knight .characters .cast:nth-child(3) .character {
+    background: url(../assets/imgs/wayneManor/aaronEckhart.webp) left/cover no-repeat;
+}
+
+.film2 .dark-knight .characters .cast:nth-child(3) .character:hover {
+    background: url(../assets/imgs/wayneManor/two\ face.jpg) center/cover no-repeat;
+    width: 90%;
+}
+
+.film2 .dark-knight .characters .cast .description {
+    width: 100%;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    /* border: 5px solid lime; */
+}
+
+.film2 .dark-knight .trailer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 5px teal;
+}
+
+/*======================================== FILM 3 */
+
+.film3 {
+    border: 5px solid firebrick;
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/imgs/wayneManor/batmanDarkNightRisesSymbol.jpg);
+}
+
+.film3 .dark-knight-rise {
+    border: 5px solid red;
+    display: inline;
+    width: 90%;
+    background: linear-gradient(180deg, rgba(209, 209, 209, 0.25) 6.25%, rgba(65, 70, 68, 0.25) 26.04%, rgba(50, 51, 50, 0.25) 46.35%, rgba(13, 8, 8, 0.8) 83.33%);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.film3 .dark-knight-rise .top-film {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.film3 .dark-knight-rise .top-film .phrase {
+    width: 50%;
+    height: 100%;
+    font-size: 1.7em;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    text-align: center;
+}
+
+.film3 .dark-knight-rise .top-film .image {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/imgs/wayneManor/batman\ dark\ knight\ rise.jpg);
+    background-size: cover;
+    background-position: right;
+}
+
+.film3 .dark-knight-rise .characters {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.film3 .dark-knight-rise .characters .cast {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.film3 .dark-knight-rise .characters .cast h1 {
+    font-size: 1em;
+    height: 100%;
+    text-shadow: 3px 3px 3px black;
+}
+
+.film3 .dark-knight-rise .characters .cast .character {
+    width: 80%;
+    height: 75%;
+    background-size: cover;
+    border: 5px solid rgba(209, 209, 209, 0.5);
+    transition: 1s;
+}
+
+.film3 .dark-knight-rise .characters .cast:nth-child(1) .character {
+    background: url(../assets/imgs/wayneManor/bale\ batman\ dark\ knight\ rises.jpg) right/cover no-repeat;
+}
+
+.film3 .dark-knight-rise .characters .cast:nth-child(1) .character:hover {
+    background: url(../assets/imgs/wayneManor/batman\ in\ dark\ knight\ rises.webp) center/cover no-repeat;
+    width: 90%;
+}
+
+.film3 .dark-knight-rise .characters .cast:nth-child(2) .character {
+    background: url(../assets/imgs/wayneManor/tom\ hardy.jpg) center/cover no-repeat;
+}
+
+.film3 .dark-knight-rise .characters .cast:nth-child(2) .character:hover {
+    background: url(../assets/imgs/wayneManor/bane.webp) center/cover no-repeat;
+    width: 90%;
+}
+
+.film3 .dark-knight-rise .characters .cast:nth-child(3) .character {
+    background: url(../assets/imgs/wayneManor/anne\ hathaway.jpg) center/cover no-repeat;
+}
+
+.film3 .dark-knight-rise .characters .cast:nth-child(3) .character:hover {
+    background: url(../assets/imgs/wayneManor/catwoman.webp) center/cover no-repeat;
+    width: 90%;
+}
+
+.film3 .dark-knight-rise .characters .cast .description {
+    width: 100%;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    /* border: 5px solid lime; */
+}
+
+.film3 .dark-knight-rise .trailer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 5px teal;
+}
+/*======================================== FILM 4 */
+.film4 {
+    border: 5px solid hotpink;
+    display: flex;
+    justify-content: center;
+    background-image: url(../assets/imgs/wayneManor/theBatman2022.jpg);
+}
+
+.film4 .the-batman {
+    border: 5px solid red;
+    display: inline;
+    width: 90%;
+    background: linear-gradient(180deg, rgba(71, 11, 11, 0.25) 6.25%, rgba(128, 15, 15, 0.25) 26.04%, rgba(207, 15, 15, 0.25) 46.35%, rgba(71, 11, 11, 0.8) 83.33%);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.film4 .the-batman .top-film {
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.film4 .the-batman .top-film .phrase {
+    width: 50%;
+    height: 100%;
+    font-size: 1.7em;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+    text-align: center;
+}
+
+.film4 .the-batman .top-film .image {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/imgs/wayneManor/the\ batman\ top.webp);
+    background-size: cover;
+    background-position: right;
+}
+
+.film4 .the-batman .characters {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.film4 .the-batman .characters .cast {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.film4 .the-batman .characters .cast h1 {
+    font-size: 1em;
+    height: 100%;
+    text-shadow: 3px 3px 3px black;
+}
+
+.film4 .the-batman .characters .cast .character {
+    width: 80%;
+    height: 75%;
+    background-size: cover;
+    border: 5px solid rgba(166, 12, 12, 0.8);
+    transition: 1s;
+}
+
+.film4 .the-batman .characters .cast:nth-child(1) .character {
+    background: url(../assets/imgs/wayneManor/robert\ pattinson.jpeg) center/cover no-repeat;
+}
+
+.film4 .the-batman .characters .cast:nth-child(1) .character:hover {
+    background: url(../assets/imgs/wayneManor/the\ batman\ batman.jpg) center/cover no-repeat;
+    width: 90%;
+}
+
+.film4 .the-batman .characters .cast:nth-child(2) .character {
+    background: url(../assets/imgs/wayneManor/zoe\ kravitz.png) center/cover no-repeat;
+}
+
+.film4 .the-batman .characters .cast:nth-child(2) .character:hover {
+    background: url(../assets/imgs/wayneManor/zoe\ catwoman.webp) center/cover no-repeat;
+    width: 90%;
+}
+
+.film4 .the-batman .characters .cast:nth-child(3) .character {
+    background: url(../assets/imgs/wayneManor/Paul\ Dano.jpg) center/cover no-repeat;
+}
+
+.film4 .the-batman .characters .cast:nth-child(3) .character:hover {
+    background: url(../assets/imgs/wayneManor/riddler.webp) center/cover no-repeat;
+    width: 90%;
+}
+
+.film4 .the-batman .characters .cast .description {
+    width: 100%;
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    /* border: 5px solid lime; */
+}
+
+.film4 .the-batman .trailer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border: 5px teal;
+}
+
+
+/*======================================== REGISTER SECTIONS */
+.register {
+    background-image: url(../assets/imgs/wayneManor/arkhamCityRegister.jpg);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-family: trajan;
+}
+
+.register .register-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    margin: 5%;
+    text-align: center;
+    gap: 30px;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(255, 0, 0, 1);
+    padding: 25px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.register .register-area h1 {
+    font-size: 35px;
+}
+
+.register .register-area .register-fields {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    gap: 2px;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+}
+
+.register .register-area .register-fields input {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    text-align: center;
+    height: 30px;
+    width: 75%;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.register .register-area .register-fields button {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    height: 30px;
+    width: 50%;
+    margin-top: 15px;
+    background-color: rgba(255, 1, 1, 0.7);
+    color: white;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    cursor: pointer;
+}
+
+.login {
+    background-image: url(../assets/imgs/wayneManor/arkhamCityLogin.jpg);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-family: trajan;
+}
+
+.login .login-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    text-align: center;
+    gap: 30px;
+    color: black;
+    text-shadow: 1px 1px 1px rgba(255, 0, 0, 1);
+    padding: 25px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.login .login-area h1 {
+    font-size: 35px;
+}
+
+.login .login-area .login-fields {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    gap: 8px;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+}
+
+.login .login-area .login-fields input {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    text-align: center;
+    height: 30px;
+    width: 75%;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.login .login-area .login-fields button {
+    font-family: trajan;
+    border-radius: 25px;
+    border-style: none;
+    height: 30px;
+    width: 50%;
+    margin-top: 15px;
+    background-color: rgba(255, 1, 1, 0.7);
+    color: white;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    cursor: pointer;
+}

@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-image: url(../assets/imgs/chooseScreen/batCaveBackground.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+.container-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.container-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 80%;
+    height: 500px;
+    border: 10px outset black;
+    border-radius: 50px;
+    background-image: url(../assets/imgs/chooseScreen/batComputer.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slider {
+    opacity: 0;
+    display: none; 
+    position: absolute;
+    height: 85%;
+    border-radius: 50px;
+    border: 5px solid black;
+    transition: opacity 2s;
+}
+.slider:hover {
+    height: 95%;
+}
+
+.on {
+    opacity: 1;
+    display: block;
+    cursor: pointer;
+}
+
+#prevButton,
+#nextButton {
+    width: 80px;
+    height: 50px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 5px;
+    margin: 30px;
+}
+
+#prevButton img,
+#nextButton img {
+    width: 100%;
+    height: 100%;
+
+}
