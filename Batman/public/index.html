@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="../public/assets/icon/favicon_io/favicon.ico">
 </head>
 
 <body>
@@ -379,97 +380,108 @@
         var resposta;
         console.log(senhaVar);
         if (
-            usernameVar <= 16 ||
-            nomeVar <= "" ||
+            usernameVar == "" ||
+            nomeVar == "" ||
             sobrenomeVar == "" ||
             emailVar == "" ||
-            senhaVar != confirmacaoSenhaVar
+            senhaVar == "" ||
+            confirmacaoSenhaVar == ""
         ) {
+            alert("Por favor preencha todos os campos!");
+        }
+        else if (usernameVar.length < 4 || usernameVar.length > 16) {
             // cardErro.style.display = "block";
             // mensagem_erro.innerHTML =
             //     "(Mensagem de erro para todos os campos em branco)";
 
             // finalizarAguardar();
-            alert ("Verifique seus campos novamente");
+            alert("Seu username deve ter entre 4 e 16 letras");
             return false;
-        }
-        // else {
-        //     setInterval(sumirMensagem, 5000);
-        // }
-
-        // Enviando o valor da nova input
-        fetch("/wayneManor/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                usernameServer: usernameVar,
-                nomeServer: nomeVar,
-                sobrenomeServer: sobrenomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    // cardErro.style.display = "block";
-
-                    // mensagem_erro.innerHTML =
-                    //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                    setTimeout(() => {
-                        window.location = "#login";
-                    }, "2000");
-
-                    // limparFormulario();
-                    // finalizarAguardar();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
+        } else if (nomeVar.length > 12) {
+            alert("Insira somente o seu primeiro nome")
+        } else if (sobrenomeVar.length > 16) {
+            alert("Insira somente um de seus sobrenomes")
+        } else if (emailVar.indexOf('@') == -1 || emailVar.indexOf('.com') == -1) {
+            alert("Insira em email válido")
+        } else if (senhaVar.length > 4 && senhaVar.indexOf('@') == -1 && senhaVar.indexOf('#') == -1 && senhaVar.indexOf('-') == -1 && senhaVar.indexOf('_') == -1 && senhaVar.indexOf('!') == -1) {
+            alert("Sua senha deve ser maior ou conter caracteres especiais")
+        } else if (senhaVar != confirmacaoSenhaVar) {
+            alert("Suas senhas não estão iguais")
+        } else {
+            // Enviando o valor da nova input
+            fetch("/wayneManor/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    usernameServer: usernameVar,
+                    nomeServer: nomeVar,
+                    sobrenomeServer: sobrenomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                }),
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-                // finalizarAguardar();
-            });
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
+                    if (resposta.ok) {
+                        // cardErro.style.display = "block";
+
+                        // mensagem_erro.innerHTML =
+                        //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "#login";
+                        }, "2000");
+
+                        // limparFormulario();
+                        // finalizarAguardar();
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                    // finalizarAguardar();
+                });
+        }
         return false;
     }
 
-    function entrar() {
-        // aguardar();
-        var usernameVar = input_loginUsername.value;
-        var senhaVar = input_loginPassword.value;
 
-        if (usernameVar == "" || senhaVar == "") {
-            // cardErro.style.display = "block"
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            // finalizarAguardar();
-            return false;
-        }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
+        function entrar() {
+            // aguardar();
+            var usernameVar = input_loginUsername.value;
+            var senhaVar = input_loginPassword.value;
 
-        console.log("FORM LOGIN: ", usernameVar);
-        console.log("FORM SENHA: ", senhaVar);
+            if (usernameVar == "" || senhaVar == "") {
+                // cardErro.style.display = "block"
+                // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+                // finalizarAguardar();
+                return false;
+            }
+            // else {
+            //     setInterval(sumirMensagem, 5000)
+            // }
 
-        fetch("/wayneManor/autenticar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // idServer: idVar,
-                usernameServer: usernameVar,
-                senhaServer: senhaVar
-                
-            })
-        }).then(function (resposta) {
+            console.log("FORM LOGIN: ", usernameVar);
+            console.log("FORM SENHA: ", senhaVar);
+
+            fetch("/wayneManor/autenticar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // idServer: idVar,
+                    usernameServer: usernameVar,
+                    senhaServer: senhaVar
+
+                })
+            }).then(function (resposta) {
                 console.log("ESTOU NO THEN DO entrar()!")
                 console.log(resposta.status);
                 if (resposta.ok) {
@@ -484,7 +496,7 @@
                         sessionStorage.ID_USUARIO = json.idUsuario;
                         sessionStorage.USERNAME_USUARIO = json.username;
                         sessionStorage.SENHA_USUARIO = json.senha;
-                            // alert (json.username);
+                        // alert (json.username);
 
                         // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
@@ -505,6 +517,7 @@
             }).catch(function (erro) {
                 console.log(erro);
             })
-        return false;
-    }
+            return false;
+        }
+    
 </script>
