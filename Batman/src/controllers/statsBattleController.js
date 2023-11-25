@@ -35,7 +35,7 @@ function confirmItens(req, res) {
         res.status(400).send("Seu Username está undefined!");
     }
 
-    statsBattleModel.confirmItens(id, equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBaseDefense, dataBaseEvasion, d)
+    statsBattleModel.confirmItens(equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBaseDefense, dataBaseEvasion, id)
         .then(
             function (resultado) {
 
@@ -54,13 +54,18 @@ function confirmItens(req, res) {
 }
 
 function getItens(req, res) {
-    var id = req.params.idServer;
+    var fkLogin = req.params.idServer;
     
-    statsBattleModel.getItens(id)
-    .then((resultado) => {
-        res.status(200).json(resultado);
+    statsBattleModel.getItens(fkLogin).then((resultado) => {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+        res.status(204).send ("Nenhum resultado encontrado!")
+        }
         // res.status(200).send ("Equipamentos foram lidos com sucesso");
     }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar o seu ID", erro.sqlMessage);
         res.status(500).json(erro.sqlMessage);
     });
 }

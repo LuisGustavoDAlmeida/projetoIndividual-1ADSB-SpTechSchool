@@ -197,27 +197,23 @@
             alert("Você não está logado");
         }
         else {
-            fetch("/statsBattle/getItens", {
+            fetch("/statsBattle/getItens/" + id, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                 },
             }).then(function (resposta) {
                 resposta.json().then(resposta => {
-                    // setTimeout(function  () {
-                    //     console.log("Redirecionando")
-                    //     window.location = "./battlePage.html";
-                    // }, 1000);
+                    setTimeout(function  () {
+                        console.log("Redirecionando")
+                        window.location = "./battlePage.html";
+                    }, 1000);
                     console.log(resposta);
-
                 })
-
             })
-
                 .catch(function (resposta) {
                     console.log(`#ERRO: ${resposta}`);
                 });
-
         }
     }
 

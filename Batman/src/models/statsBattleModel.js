@@ -1,7 +1,7 @@
 var database = require("../database/config")
 
 function confirmItens(equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBaseDefense, dataBaseEvasion, id) {
-   
+
     var instrucao = `
     INSERT INTO loadout (equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBaseDefense, dataBaseEvasion, fkLogin) VALUES ('${equip1}' , '${equip2}' , '${equip3}' , '${dataBaseHp}' , '${dataBaseDamage}', '${dataBaseDefense}', '${dataBaseEvasion}', '${id}'); 
     `;
@@ -10,10 +10,10 @@ function confirmItens(equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBa
     return database.executar(instrucao);
 }
 
-function getItens (id) {
+function getItens (fkLogin) {
     // console.log ("Valor da fkLogin", fkLogin)
     var instrucao = `
-    SELECT * from loadout where fkLogin = '${id}';
+    SELECT * from loadout where fkLogin = '${fkLogin}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

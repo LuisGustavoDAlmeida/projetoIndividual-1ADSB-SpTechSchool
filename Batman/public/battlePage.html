@@ -8,10 +8,13 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="getItens()">
     <h1 id="dados">Dados</h1>
     <div>
-        <canvas id="myChart"></canvas>
+        <div id="equip1"></div>
+        <h1 id="equip2"></h1>
+        <h1 id="equip3"></h1>
+        <canvas id = "myChartCanvas1"></canvas>
     </div>
 
 </body>
@@ -19,46 +22,167 @@
 </html>
 
 <script>
-    const ctx = document.getElementById('myChart');
-    // function generateTable(){
-    new Chart(ctx, {
-        type: 'radar',
-        data: {
-            labels: ['Dano', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: ['Hp', 'Dano', 'Defesa', 'Evasão'],
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-                backgroundColor: 'rgba (67, 43, 49, 0.5)',
-                borderColor: 'rba (33, 129, 205)',
-                borderWidth: 1,
-            }],
-        },
-        options: {
-            scales: {
-                r: {
-                    min: 0,
-                    max: 300,
-                },
-            },
-        },
-    });
-// }
+    // const ctx = document.getElementById('myChart');
+    const id = sessionStorage.ID_USUARIO;
 
-    // function getItens() {
-    //     fetch("/statsBattle/getItens", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             idServer: id,
-    //         }),
-    //     })
-    //         .then(function (resposta) {
-    //             resposta.json().then((dados) => {
+    // function changeTitles() {
+    //     equip1.innerHTML = `${resposta[1]}`
+    //     equip1.innerHTML = `${resposta[2]}`
+    //     equip1.innerHTML = `${resposta[3]}`
+    // }
+
+    function getItens() {
+        function putCorretIdInCanvas(){
+            var canvasId = `myChartCanvas${id}`;
+            var canvasElement = document.getElementById(canvasId);
+        }
+        fetch("/statsBattle/getItens/" + id, { cache: 'no-store' }, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then(function (resposta) {
+
+            resposta.json().then(resposta => {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                console.log(resposta);
+                resposta.forEach((loadout) => {
+                    equip1.innerHTML = `<h1> ${loadout.equip1} </h1> <br>
+                    <h1>${loadout.equip2} </h1> <br>
+                    <h1>${loadout.equip3} </h1>`
+                })
+                plotarGrafico(resposta, id)
+            });
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function plotarGrafico(resposta, id) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'HP',
+                data: [],
+                fill: true,
+                backgroundColor: 'rgb(0, 192, 0)',
+                tension: 0.1
+            },
+            {
+                label: 'DANO',
+                data: [],
+                fill: true,
+                backgroundColor: 'rgb(255, 0, 0)',
+                tension: 0.1
+            },
+            {
+                label: 'DEFESA',
+                data: [],
+                fill: true,
+                backgroundColor: 'rgb(0, 0, 0)',
+                tension: 0.1
+            },
+            {
+                label: 'EVASÃO',
+                data: [],
+                fill: true,
+                backgroundColor: 'rgb(0, 0, 255)',
+                tension: 0.1
+            }
+        ]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro);
+            dados.datasets[0].data.push(registro.dataBaseHp);
+            dados.datasets[1].data.push(registro.dataBaseDamage);
+            dados.datasets[2].data.push(registro.dataBaseDefense);
+            dados.datasets[3].data.push(registro.dataBaseEvasion);
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas${id}`),
+            config
+        );
+
+        // setTimeout(() => atualizarGrafico(id, dados, myChart), 2000);
+    }
+
+
+
+
+    // function obterDadosGrafico(id) {
+
+    //     fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (resposta) {
+    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    //                 resposta.reverse();
+
+    //                 plotarGrafico(resposta, idAquario);
+
     //             });
-    //         }),
-    //     }
-            
+    //         } else {
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+    //         });
+    // }
+
+
+
+
+    // function generateTable(){
+    // new Chart(ctx, {
+    //     type: 'radar',
+    //     data: {
+    //         labels: ['Dano', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    //         datasets: [{
+    //             label: ['Hp', 'Dano', 'Defesa', 'Evasão'],
+    //             data: [12, 19, 3, 5, 2, 3],
+    //             borderWidth: 1,
+    //             backgroundColor: 'rgba (67, 43, 49, 0.5)',
+    //             borderColor: 'rba (33, 129, 205)',
+    //             borderWidth: 1,
+    //         }],
+    //     },
+    //     options: {
+    //         scales: {
+    //             r: {
+    //                 min: 0,
+    //                 max: 300,
+    //             },
+    //         },
+    //     },
+    // });
 </script>
