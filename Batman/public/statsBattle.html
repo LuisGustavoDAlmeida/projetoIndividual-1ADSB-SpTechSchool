@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="div_name"></h1>
+    <h2 id="batrang" class="weapon"> Batarang </h2>
+    <h2 id="heatWeapon" class="weapon"> Arma de calor</h2>
+    <h2 id="sword" class="weapon">Espada</h2>
+    <h2 id="smokeBomb" class="weapon">Bomba de fumaça</h2>
+    <h2 id="armor" class="armor">Armadura </h2>
+    <h2 id="cloak" class="armor">Capa</h2>
+    <h2 id="gloves" class="armor">Luvas</h2>
+    <h2 id="gasMask" class="armor">Máscara de gás</h2>
+    <button onclick="inventory()"> Ver inventário </button>
+    <button onclick="clearBelt()">Reescolher itens?</button>
+    <button onclick="confirmItens()">Registrar no banco de dados da WayneTech?</button>
+    <button onclick="getItens()">Avançar para sua página?</button>
+    <!-- <button onclick="verifyStats()"></button> -->
+    <div id="equipaments"></div>
+    <div id="div_stats"></div>
+</body>
+
+</html>
+
+<script>
+    const username = sessionStorage.USERNAME_USUARIO;
+    const id = sessionStorage.ID_USUARIO;
+    div_name.innerHTML += `Bem vindo as empresas Wayne ${username}, por favor escolha seus equipamentos`;
+    const weaponry = document.querySelectorAll(".weapon");
+    const armory = document.querySelectorAll(".armor");
+    console.log(id);
+    var equipLoad = 0;
+    var names = [];
+    var damages = [];
+    var defenses = [];
+    var evasions = [];
+    var selectedEquipament = 0;
+
+    weaponry.forEach((weaponry, index) => {
+        weaponry.addEventListener("click", function selectWeapon() {
+            if (equipLoad < 3) {
+                if (index === 0) {
+                    alert("Batrang");
+                    names.push("Batrang");
+                    damages.push(100);
+                    defenses.push(0);
+                    evasions.push(0);
+                    // batBelt.push(weaponry[index]);
+                } else if (index === 1) {
+                    alert("Arma de Calor")
+                    names.push("Arma de Calor");
+                    damages.push(20);
+                    defenses.push(0);
+                    evasions.push(0);
+                } else if (index === 2) {
+                    alert("Espada");
+                    names.push("Espada");
+                    damages.push(150);
+                    defenses.push(25);
+                    evasions.push(0);
+                } else if (index === 3) {
+                    alert("Bomba de fumaça");
+                    names.push("Bomba de fumaça");
+                    damages.push(0);
+                    defenses.push(0);
+                    evasions.push(100);
+                }
+                equipLoad++;
+            } else {
+                alert("Cheio")
+            }
+        });
+    });
+    armory.forEach((armory, index) => {
+        armory.addEventListener("click", function selectArmor() {
+            if (equipLoad < 3) {
+                if (index === 0) {
+                    alert("armadura");
+                    names.push("Armadura");
+                    damages.push(0);
+                    defenses.push(75);
+                    evasions.push(0);
+                } else if (index === 1) {
+                    alert("Capa")
+                    names.push("Capa");
+                    damages.push(0);
+                    defenses.push(25);
+                    evasions.push(100);
+                } else if (index === 2) {
+                    alert("Luvas");
+                    names.push("Luvas");
+                    damages.push(25);
+                    defenses.push(25);
+                    evasions.push(25);
+                } else if (index === 3) {
+                    alert("Máscara de gás")
+                    names.push("Máscara de gás");
+                    damages.push(0);
+                    defenses.push(0);
+                    evasions.push(0);
+                }
+                equipLoad++;
+            } else {
+                alert("Cheio");
+            }
+        });
+    });
+    function inventory() {
+        div_stats.innerHTML = ``;
+        for (var counter = 0; counter < equipLoad; counter++) {
+            // var totalDamage = 0;
+            // var totalDefense = 0;
+            // var totalEvasion = 0;
+            // totalDamage = damages[counter];
+            // totalDefense = defenses[counter];
+            // totalEvasion = evasions[counter];
+            // var totalDefense
+            // var totalEvasion
+            div_stats.innerHTML += `<h1> ${names[counter]} </h1> <br>
+            Dano: ${damages[counter]} <br>
+            Defesa: ${defenses[counter]} <br>
+            Evasão: ${evasions[counter]} <br>
+            `;
+        }
+    }
+    function clearBelt() {
+        div_stats.innerHTML = ``;
+        equipLoad = 0;
+        names = [];
+        damages = [];
+        defenses = [];
+        evasions = [];
+        inventory();
+    }
+    function confirmItens() {
+        var totalDamage = 0;
+        var totalDefense = 0;
+        var totalEvasion = 0;
+
+        for (var counter = 0; counter < equipLoad; counter++) {
+            totalDamage += damages[counter];
+            totalDefense += defenses[counter];
+            totalEvasion += evasions[counter];
+        }
+        if (equipLoad == 3) {
+            div_stats.innerHTML = ` <br>
+        <h1> Status do Personagem </h1> </br>
+            HP: ${totalDefense + totalEvasion} <br>
+            Dano Total: ${totalDamage} <br>
+            Defesa Total: ${totalDefense}<br>
+            Evasão Total: ${totalEvasion}<br>
+            `
+            var equip1 = names[0];
+            var equip2 = names[1];
+            var equip3 = names[2];
+            var dataBaseHP = totalDefense + totalEvasion;
+            var dataBaseDamage = totalDamage;
+            var dataBaseDefense = totalDefense;
+            var dataBaseEvasion = totalEvasion;
+            selectedEquipament = 1;
+            // databaseServer 
+            fetch("/statsBattle/confirmItens", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    equip1Server: equip1,
+                    equip2Server: equip2,
+                    equip3Server: equip3,
+                    hpServer: dataBaseHP,
+                    damageServer: dataBaseDamage,
+                    defenseServer: dataBaseDefense,
+                    evasionServer: dataBaseEvasion,
+                    idServer: id,
+                }),
+            })
+            // CRIAR A ROTA AQUI
+        } else if (equipLoad == 3) {
+            alert("Escolha até 3 equipamentos por favor Sr.");
+        } else if (selectedEquipament == 1) {
+            alert("Você já selecionou os seus equipamentos")
+        }
+    }
+    function getItens() {
+        if (names.length === 0) {
+            alert("Você não pode prosseguir, precisa selecionar seus equipamentos");
+        } else if (id == undefined) {
+            alert("Você não está logado");
+        }
+        else {
+            fetch("/statsBattle/getItens", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(function (resposta) {
+                resposta.json().then(resposta => {
+                    // setTimeout(function  () {
+                    //     console.log("Redirecionando")
+                    //     window.location = "./battlePage.html";
+                    // }, 1000);
+                    console.log(resposta);
+
+                })
+
+            })
+
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+
+        }
+    }
+
+    // FAZER UM DELETE NESSA PÁGINA PRA CASO ELE JÁ TENHA REGISTRADO;
+</script>

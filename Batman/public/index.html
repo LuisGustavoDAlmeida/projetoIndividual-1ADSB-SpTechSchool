@@ -379,18 +379,18 @@
         var resposta;
         console.log(senhaVar);
         if (
-            usernameVar == "" ||
-            nomeVar == "" ||
+            usernameVar <= 16 ||
+            nomeVar <= "" ||
             sobrenomeVar == "" ||
             emailVar == "" ||
-            senhaVar == "" ||
-            confirmacaoSenhaVar == ""
+            senhaVar != confirmacaoSenhaVar
         ) {
             // cardErro.style.display = "block";
             // mensagem_erro.innerHTML =
             //     "(Mensagem de erro para todos os campos em branco)";
 
             // finalizarAguardar();
+            alert ("Verifique seus campos novamente");
             return false;
         }
         // else {
@@ -410,7 +410,7 @@
                 nomeServer: nomeVar,
                 sobrenomeServer: sobrenomeVar,
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
             }),
         })
             .then(function (resposta) {
@@ -419,8 +419,8 @@
                 if (resposta.ok) {
                     // cardErro.style.display = "block";
 
-                    mensagem_erro.innerHTML =
-                        "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                    // mensagem_erro.innerHTML =
+                    //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
                     setTimeout(() => {
                         window.location = "#login";
@@ -442,7 +442,6 @@
 
     function entrar() {
         // aguardar();
-
         var usernameVar = input_loginUsername.value;
         var senhaVar = input_loginPassword.value;
 
@@ -465,6 +464,7 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
+                // idServer: idVar,
                 usernameServer: usernameVar,
                 senhaServer: senhaVar
                 
@@ -476,18 +476,21 @@
                     console.log(resposta);
 
                     resposta.json().then(json => {
-                        console.log(json);
-                        console.log(JSON.stringify(json));
+                        // console.log(json)
+                        // console.log(JSON.stringify(json));
                         // sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.NOME_USUARIO = json.username;
-                        sessionStorage.ID_USUARIO = json.id;
-                            alert (json.username);
+                        // sessionStorage.ID = json.idUsuario;
+                        sessionStorage.clear();
+                        sessionStorage.ID_USUARIO = json.idUsuario;
+                        sessionStorage.USERNAME_USUARIO = json.username;
+                        sessionStorage.SENHA_USUARIO = json.senha;
+                            // alert (json.username);
 
                         // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                         setTimeout(function () {
                             console.log("Redirecionando")
-                            window.location = "./loginSucess.html"; /* COLOCAR A ROTA AQUI DEPOIS, PARA A WAYNETECH */
+                            window.location = "./loadingScreen.html"; /* COLOCAR A ROTA AQUI DEPOIS, PARA A WAYNETECH */
                         }, 1000); // apenas para exibir o loading
                     });
 

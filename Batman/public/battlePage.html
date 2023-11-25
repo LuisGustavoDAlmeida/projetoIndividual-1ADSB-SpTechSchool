@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="dados">Dados</h1>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    // function generateTable(){
+    new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Dano', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: ['Hp', 'Dano', 'Defesa', 'Evasão'],
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+                backgroundColor: 'rgba (67, 43, 49, 0.5)',
+                borderColor: 'rba (33, 129, 205)',
+                borderWidth: 1,
+            }],
+        },
+        options: {
+            scales: {
+                r: {
+                    min: 0,
+                    max: 300,
+                },
+            },
+        },
+    });
+// }
+
+    // function getItens() {
+    //     fetch("/statsBattle/getItens", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({
+    //             idServer: id,
+    //         }),
+    //     })
+    //         .then(function (resposta) {
+    //             resposta.json().then((dados) => {
+    //             });
+    //         }),
+    //     }
+            
+</script>

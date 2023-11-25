@@ -1,3 +1,8 @@
+@font-face {
+    font-family: kalam;
+    src: url(../assets/fonts/Kalam/Kalam-Bold.ttf);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -32,7 +37,7 @@ main {
 
 .container-images {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     width: 80%;
@@ -45,10 +50,28 @@ main {
     background-size: cover;
 }
 
+.container-images img {
+    max-width: 60%;
+}
+
+.slider-text {
+    /* display: block; */
+    width: 100%;
+    height: 100%;
+    padding: 60px;
+}
+
+.slider-text h1{
+    text-align: center;
+    font-family: kalam;
+    font-size: 1.5em;
+    color: white;
+}
+
 .slider {
     opacity: 0;
     display: none; 
-    position: absolute;
+    /* position: absolute; */
     height: 85%;
     border-radius: 50px;
     border: 5px solid black;

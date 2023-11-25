@@ -16,8 +16,13 @@
             <div class="container-images">
                 <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/wayneManor.jpg " alt="" class="slider">
                 <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/arkhamAsylum.jpg" alt="" class="slider">
-                <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/blackGatePenitentiary.jpg" alt="" class="slider">
-                <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/wayneEnterprises.jpg" alt="" class="slider">
+                <!-- <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/blackGatePenitentiary.jpg" alt="" class="slider"> -->
+                <img onclick="goToLocation()" src="./assets/imgs/chooseScreen/wayneEnterprises.jpg" alt=""
+                    class="slider">
+                <div class="slider-text">
+                    <h1 id="user"></h1>
+                </div>
+
             </div>
             <button onclick="nextSlider()" id="nextButton"> <img src="./assets/imgs/chooseScreen/batArrow.png" alt=""
                     width="50px"></button>
@@ -30,41 +35,55 @@
     const nextButton = document.querySelectorAll('#nextButton');
     const prevButton = document.querySelectorAll('#prevButton');
     let actualSlide = 0;
+    const username = sessionStorage.USERNAME_USUARIO;
     slider[actualSlide].classList.add('on');
-    var idUsuario = sessionStorage.getItem('NOME_USUARIO');
-    console.log (idUsuario);
+    user.innerHTML = `Olá ${username} seja bem-vindo a Batcaverna, clique nos morcegos para selecionar a sua localização. Se você clicar na mansão novamente o seu acesso a Batcaverna terá que ser recuperado novamente.`
+
 
     function nextSlider() {
         if (actualSlide < slider.length - 1) {
             slider[actualSlide].classList.remove('on');
             actualSlide++;
             slider[actualSlide].classList.add('on');
-        } else if (actualSlide == 3) {
+        } else if (actualSlide == 2) {
             slider[actualSlide].classList.remove('on');
             actualSlide = 0;
             slider[actualSlide].classList.add('on');
         }
+        verifyText();
     }
     function prevSlider() {
         if (actualSlide == 0) {
             slider[actualSlide].classList.remove('on');
-            actualSlide = 3;
+            actualSlide = 2;
             slider[actualSlide].classList.add('on');
         } else {
             slider[actualSlide].classList.remove('on');
             actualSlide--;
             slider[actualSlide].classList.add('on');
+            `Seja como o cavaleiro das trevas e passe na WayneTech para pegar equipamentos exclusivos para a sua conta.`
         }
+        verifyText();
     }
     function goToLocation() {
         if (actualSlide == 0) {
             window.location.href = "./index.html";
         } else if (actualSlide == 1) {
-            window.location.href = "../webSites/arkhamAsylum/arkhamAsylum.html";
+            window.location.href = "./villainsGlossary.html";
         } else if (actualSlide == 2) {
-            window.location.href = "../webSites/blackGatePrision/blackGatePrision.html";
-        } else if (actualSlide == 3) {
-            window.location.href = "../webSites/wayneEnterprises/wayneEnterprises.html";
+            window.location.href = "./wayneInc.html";
+        }
+        //  else if (actualSlide == 3) {
+        //     window.location.href = "../webSites/wayneEnterprises/wayneEnterprises.html";
+        // }
+    }
+    function verifyText() {
+        if (actualSlide == 0) {
+            user.innerHTML = `Olá ${username} seja bem-vindo a Batcaverna, clique nos morcegos para selecionar a sua localização. Se você clicar na mansão novamente o seu acesso a Batcaverna terá que ser recuperado novamente.`
+        } else if (actualSlide == 1) {
+            user.innerHTML = `Você ${username} está preparado para conhecer os supervilões de Gotham City, clique na imagem e saiba mais sobre todos eles.`
+        } else if (actualSlide == 2){
+            user.innerHTML = `Seja como o Cavaleiro das Trevas ${username}, passe nas empresas Wayne para pegar equipamentos exclusivos de sua própria conta, além disso veja suas estatísticas conforme esses itens.`
         }
     }
 </script>
