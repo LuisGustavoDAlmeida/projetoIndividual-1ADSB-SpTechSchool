@@ -1,0 +1,140 @@
+@font-face {
+    font-family: futura-bt;
+    src: url(../assets/fonts/futura-bt-maisfontes.c6c9/futura-bt.ttf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-anchor: none;
+    list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1)
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.8)
+}
+
+
+html {
+    scroll-behavior: smooth;
+    font-family: futura-bt;
+}
+
+section {
+    /* width: 100vw; */
+    height: 100vh;
+}
+
+.equipaments {
+    background: url(../assets/imgs/equipaments/batcaveBackground.jpg) center/cover;
+    display: flex;
+}
+
+.equipaments .general-equip {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.equipaments .general-equip .loadout img {
+    max-width: 90%;
+    filter: blur(3px);
+}
+
+.equipaments .general-equip .loadout img:hover {
+    max-width: 100%;
+    filter: blur(0px);
+    border: 3px solid yellow;
+}
+
+.equipaments .general-equip .loadout {
+    height: 50%;
+    display: flex;
+    overflow: scroll;
+    overflow-y: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    gap: 10%;
+    padding: 2%;
+}
+
+
+.equipaments .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.equipaments .buttons button {
+    font-family: futura-bt;
+    font-size: 1em;
+    color: yellow;
+    background-color: black;
+    border-style: none;
+    border-radius: 25%;
+    height: 50px;
+    transition: 0.3s;
+}
+
+.equipaments .buttons button:hover {
+    height: 70px;
+    border: white;
+    color: white;
+}
+
+.butler {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.butler .alfred {
+    display: flex;
+    height: 75%;
+    width: 100%;
+    justify-content: center;
+}
+
+.alfred img {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+}
+
+.butler .central-title {
+    border: 5px solid blue;
+    width: 100%;
+    height: 25%;
+    font-size: 1.2em;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 3px solid black;
+}
+
+#div_stats {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    font-size: 1.2em;
+    height: 45%;
+    color: yellow;
+    text-shadow: 3px 3px 3px black;
+}
+
+
+

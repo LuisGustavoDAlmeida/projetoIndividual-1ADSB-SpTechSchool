@@ -5,25 +5,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../public/css/statsBattle.css">
 </head>
 
 <body>
-    <h1 id="div_name"></h1>
-    <h2 id="batrang" class="weapon"> Batarang </h2>
-    <h2 id="heatWeapon" class="weapon"> Arma de calor</h2>
-    <h2 id="sword" class="weapon">Espada</h2>
-    <h2 id="smokeBomb" class="weapon">Bomba de fumaça</h2>
-    <h2 id="armor" class="armor">Armadura </h2>
-    <h2 id="cloak" class="armor">Capa</h2>
-    <h2 id="gloves" class="armor">Luvas</h2>
-    <h2 id="gasMask" class="armor">Máscara de gás</h2>
-    <button onclick="inventory()"> Ver inventário </button>
-    <button onclick="clearBelt()">Reescolher itens?</button>
-    <button onclick="confirmItens()">Registrar no banco de dados da WayneTech?</button>
-    <button onclick="getItens()">Avançar para sua página?</button>
-    <!-- <button onclick="verifyStats()"></button> -->
-    <div id="equipaments"></div>
-    <div id="div_stats"></div>
+    <main>
+        <section class="equipaments">
+            <div class="general-equip">
+                <div class="loadout">
+                    <img id="batrang" class="weapon" src="./assets/imgs/equipaments/batrangs.png">
+                    <!-- <span>Batarang</span> -->
+                    <img id="shockWeapon" class="weapon" src="./assets/imgs/equipaments/dischargeWeapon.webp">
+                    <!-- <span>Arma de eletricidade</span> -->
+                    <img id="sword" class="weapon" src="./assets/imgs/equipaments/batSword.jpg">
+                    <!-- <span>Espada</span> -->
+                    <img id="smokeBomb" class="weapon" src="./assets/imgs/equipaments/smokeBomb.webp">
+                    <!-- <span>Bomba de fumaça</span> -->
+                    <img id="armor" class="armor" src="./assets/imgs/equipaments/batArmor.webp">
+                    <!-- <span>Armadura</span> -->
+                    <img id="cloak" class="armor" src="./assets/imgs/equipaments/batCloak.jpg">
+                    <!-- <span>Capa</span> -->
+                    <img id="gloves" class="armor" src="./assets/imgs/equipaments/batGloves.webp">
+                    <!-- <span>Luvas</span> -->
+                    <img id="gasMask" class="armor" src="./assets/imgs/equipaments/gasMask.webp">
+                    <!-- <span>Máscara de gás</span> -->
+                </div>
+                <div class="buttons">
+                    <button onclick="inventory()"> Ver inventário?</button>
+                    <button onclick="clearBelt()">Reescolher itens?</button>
+                    <button onclick="confirmItens()">Registrar no banco de dados da WayneTech?</button>
+                    <button onclick="getItens()">Avançar para a batalha?</button>
+                </div>
+                <div id="div_stats"></div>
+            </div>
+            <div class="butler">
+                <div class="alfred">
+                    <img src="./assets/imgs/equipaments/alfredPennyworth.webp" alt="">
+                </div>
+                <div class="central-title">
+                    <h1 id="div_name"></h1>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
@@ -31,7 +55,7 @@
 <script>
     const username = sessionStorage.USERNAME_USUARIO;
     const id = sessionStorage.ID_USUARIO;
-    div_name.innerHTML += `Bem vindo as empresas Wayne ${username}, por favor escolha seus equipamentos`;
+    div_name.innerHTML = `Olá ${username}, você irá ajudar o patrão Bruce desta vez? Por favor escolha os seus equipamentos ao lado:`;
     const weaponry = document.querySelectorAll(".weapon");
     const armory = document.querySelectorAll(".armor");
     console.log(id);
@@ -46,26 +70,26 @@
         weaponry.addEventListener("click", function selectWeapon() {
             if (equipLoad < 3) {
                 if (index === 0) {
-                    alert("Batrang");
+                    div_name.innerHTML = `Você selecionou os Batrangs? Boa escolha.`;
                     names.push("Batrang");
                     damages.push(100);
                     defenses.push(0);
                     evasions.push(0);
                     // batBelt.push(weaponry[index]);
                 } else if (index === 1) {
-                    alert("Arma de Calor")
-                    names.push("Arma de Calor");
+                    div_name.innerHTML = `Uma arma de eletricidade? Parece perfeita para eletrizar seus inimigos.`;
+                    names.push("Arma de Eletricidade");
                     damages.push(20);
                     defenses.push(0);
                     evasions.push(0);
                 } else if (index === 2) {
-                    alert("Espada");
+                    div_name.innerHTML = `Uma espada, o que isto está fazendo aqui? Não é do feitio do patrão Bruce escolher este tipo de arma, porém funciona muito bem.`;
                     names.push("Espada");
                     damages.push(150);
                     defenses.push(25);
                     evasions.push(0);
                 } else if (index === 3) {
-                    alert("Bomba de fumaça");
+                    div_name.innerHTML = `Bombas de fumaça? Se você gosta de furtividade, isto é essencial.`;
                     names.push("Bomba de fumaça");
                     damages.push(0);
                     defenses.push(0);
@@ -73,7 +97,7 @@
                 }
                 equipLoad++;
             } else {
-                alert("Cheio")
+                div_name.innerHTML = `Parece que o seu cinto de utilidades está cheio, por favor esvazie ele apertando no botão se for do seu desejo.`;
             }
         });
     });
@@ -81,25 +105,25 @@
         armory.addEventListener("click", function selectArmor() {
             if (equipLoad < 3) {
                 if (index === 0) {
-                    alert("armadura");
+                    div_name.innerHTML = `Uma armadura? Proteção demais, nunca é demais.`;
                     names.push("Armadura");
                     damages.push(0);
                     defenses.push(75);
                     evasions.push(0);
                 } else if (index === 1) {
-                    alert("Capa")
+                    div_name.innerHTML = `Uma capa? Não pode faltar no kit de um morcego.`;
                     names.push("Capa");
                     damages.push(0);
                     defenses.push(25);
                     evasions.push(100);
                 } else if (index === 2) {
-                    alert("Luvas");
+                    div_name.innerHTML = `Um par de luvas? Entendi, não quer machucar as suas mãos enquanto você bate em seus inimigos.`;
                     names.push("Luvas");
                     damages.push(25);
                     defenses.push(25);
                     evasions.push(25);
                 } else if (index === 3) {
-                    alert("Máscara de gás")
+                    div_name.innerHTML = `Não sei qual seria a utilidade deste item... Mas se é da sua escolha, não irei impedi-lo.`
                     names.push("Máscara de gás");
                     damages.push(0);
                     defenses.push(0);
@@ -107,7 +131,7 @@
                 }
                 equipLoad++;
             } else {
-                alert("Cheio");
+                div_name.innerHTML = `Parece que o seu cinto de utilidades está cheio, por favor esvazie ele apertando no botão se for do seu desejo.`;
             }
         });
     });
@@ -122,6 +146,7 @@
             // totalEvasion = evasions[counter];
             // var totalDefense
             // var totalEvasion
+            div_name.innerHTML = `Estes são os equipamentos que você escolheu e os seus status.`
             div_stats.innerHTML += `<h1> ${names[counter]} </h1> <br>
             Dano: ${damages[counter]} <br>
             Defesa: ${defenses[counter]} <br>
@@ -185,18 +210,20 @@
             })
             // CRIAR A ROTA AQUI
         } else if (equipLoad == 3) {
-            alert("Escolha até 3 equipamentos por favor Sr.");
+            div_name.innerHTML = `Você precisa escolher até 3 equipamentos.`;
         } else if (selectedEquipament == 1) {
-            alert("Você já selecionou os seus equipamentos")
+            div_name.innerHTML = `Parece que seus equipamentos já estão selecionados.`;
         }
     }
     function getItens() {
         if (names.length === 0) {
-            alert("Você não pode prosseguir, precisa selecionar seus equipamentos");
+            div_name.innerHTML = `Você não pode ir para a batalha sem equipamentos.`;
         } else if (id == undefined) {
-            alert("Você não está logado");
+            div_name.innerHTML = `Como você passou pela entrada da Batcaverna sem se registrar? O patrão não irá ficar nada feliz.`
         }
         else {
+            div_name.innerHTML = `Você será redirecionado em breve, vale lembrar que você só pode selecionar 1 arsenal.`
+
             fetch("/statsBattle/getItens/" + id, {
                 method: "GET",
                 headers: {
@@ -204,10 +231,10 @@
                 },
             }).then(function (resposta) {
                 resposta.json().then(resposta => {
-                    setTimeout(function  () {
+                    setTimeout(function () {
                         console.log("Redirecionando")
                         window.location = "./battlePage.html";
-                    }, 1000);
+                    }, 5000);
                     console.log(resposta);
                 })
             })
