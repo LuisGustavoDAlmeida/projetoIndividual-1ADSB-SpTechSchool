@@ -8,7 +8,7 @@ router.post("/confirmItens", function (req, res) {
     statsBattleController.confirmItens (req, res);
 });
 
-router.get("/getItens/:idServer", function (req, res) {
+router.get("/getItens/:idEquipamento", function (req, res) {
     statsBattleController.getItens (req, res);
 });
 

@@ -402,7 +402,7 @@ h2 {
 
 /*======================================== FILM 2 */
 .film2 {
-    border: 5px solid fuchsia;
+    /* border: 5px solid fuchsia; */
     display: flex;
     justify-content: center;
     background-image: url(../assets/imgs/wayneManor/batmanDarkKnightSymbol.jpg);

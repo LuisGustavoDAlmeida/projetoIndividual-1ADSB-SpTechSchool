@@ -6,183 +6,506 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/battle.css">
 </head>
 
 <body onload="getItens()">
-    <h1 id="dados">Dados</h1>
-    <div>
-        <div id="equip1"></div>
-        <h1 id="equip2"></h1>
-        <h1 id="equip3"></h1>
-        <canvas id = "myChartCanvas4"></canvas>
-    </div>
+    <main>
+        <section class="card parallax">
+            <div class="title-card">
+                <h1 id="title">AQUI FICA O TÍTULO</h1>
+            </div>
+            <div class="first-section">
+                <div class="chart">
+                    <canvas id="myChartCanvas"></canvas>
+                </div>
+                <div id="equips" class="loadout">
+                </div>
+            </div>
+            <div class="second-section">
+                <div class="personal-batman">
+                    <img src="./assets/imgs/finalBattle/tankerBatman.jpg" alt="" class="image">
+                    <img src="./assets/imgs/finalBattle/damageBatman.webp" alt="" class="image">
+                    <img src="./assets/imgs/finalBattle/defenseBatman.webp" alt="" class="image">
+                    <img src="./assets/imgs/finalBattle/agilityBatman.webp" alt="" class="image">
+                </div>
+                <div class="batman-stats">
+                    <div class="stats">
+                        <h1>
+                            Se o seu HP é >= 170, <br> você é o Batman do Frank Miller.
+                        </h1>
+                    </div>
+                    <div class="stats">
+                        <h1>
+                            Se o seu DANO é >= 300, <br> você é o Batman Samurai.
+                        </h1>
+                    </div>
+                    <div class="stats">
+                        <h1>
+                            Se a sua DEFESA é >=180, <br> você é o Armored Batman.
+                        </h1>
+                    </div>
+                    <div class="stats">
+                        <h1>
+                            Se a sua EVASÃO é >=190, <br> você é o Batman Ano Um.
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="villain-sort">
+            <div class="villains">
+                <div class="villain1">
+                    <img src="./assets/imgs/finalBattle/jokerBattle.webp" alt="">
+                </div>
+                <div class="villain2">
+                    <img src="./assets/imgs/finalBattle/baneBattle.png" alt="">
+                </div>
+                <div class="villain3">
+                    <img src="./assets/imgs/finalBattle/rasBattle.avif" alt="">
+                </div>
+            </div>
+            <div class="sort">
+                <button onclick="chooseVillain()">Sortear vilão</button>
+            </div>
+        </section>
+        <section class="battle">
+            <div class="title">
+                <h1 id="villainTitle"></h1>
+            </div>
+            <div class="interative">
+                <div class="actions">
+                    <button onclick="calcDamage()">Golpear</button>
+                    <button onclick="calcDamageTaken()">Defender</button>
+                    <button">Ver status</button>
+                        <button onclick="resultsInsert()">Registrar seu resultado?</button>
+                </div>
+                <div class="stats-box">
+                    <div id="avoidV">
+                        <h1></h1>
+                    </div>
+                    <div id="damageDealt">
+                        <h1>Você causou 0 dano</h1>
+                        <h1>Representa 0% da sua vida</h1>
+                    </div>
+                    <div id="avoidH">
+                        <h1></h1>
+                    </div>
+                    <div id="damageVillain">
+                        <h1>Você recebeu 0 dano</h1>
+                        <h1>Representa 0% da sua vida</h1>
+                    </div>
+                    <div class="points-result">
+                        <h1>Você ganhou e sua pontuação foi: 555</h1>
+                    </div>
+                </div>
+                <div class="villain">
+                </div>
+            </div>
+        </section>
+        <section class="leaderboard parallax">
+            <div class="geral-leaderboard">
 
+            </div>
+            <div class="control-leaderboard">
+                <button onclick="leaderboard()">Exibir leaderboard?</button>
+                <button>Limpar seu registro na leaderboard?</button>
+                <!-- FAZER MAIS UMA ROTA PARA TE TIRAR DAQUI PARA REMOVER A FK AI SIM VOCÊ PPDE REMOVER LÁ EM CIMA SEU EQUIPAMENTO -->
+            </div>
+        </section>
+    </main>
 </body>
 
 </html>
 
 <script>
-    // const ctx = document.getElementById('myChart');
+
+    const ctx = document.getElementById('myChartCanvas');
+    const username = sessionStorage.USERNAME_USUARIO;
     const id = sessionStorage.ID_USUARIO;
+    const batmans = document.querySelectorAll(".image");
+    let dataBaseDamage, dataBaseDefense, dataBaseEvasion, dataBaseHp, equip1, equip2, equip3, fkLogin, idEquipamento // Armazenar dados da resposta
 
-    // function changeTitles() {
-    //     equip1.innerHTML = `${resposta[1]}`
-    //     equip1.innerHTML = `${resposta[2]}`
-    //     equip1.innerHTML = `${resposta[3]}`
-    // }
 
-    function getItens() {
-        function putCorretIdInCanvas(){
-            var canvasId = `myChartCanvas${id}`;
-            var canvasElement = document.getElementById(canvasId);
+
+    var joker = {
+        damage: 30,
+        defense: 50,
+        evasion: 220,
+        hp: 300
+    };
+    var bane = {
+        damage: 150,
+        defense: 125,
+        evasion: 25,
+        hp: 400
+    };
+    var ras = {
+        damage: 100,
+        defense: 100,
+        evasion: 100,
+        hp: 350
+    };
+    // All villains have the sum of 300
+
+
+    var actualVillain = 0;
+    var actualBatman = 0;
+    function changeTitles() {
+        title.innerHTML = `Olá, este é o seu CARD ${username}`;
+        equips.innerHTML = `
+        <h1>Número do arsenal: ${idEquipamento} <h1> <br>
+        <h1>Equipamento 1: ${equip1}</h1> <br>
+        <h1>Equipamento 2:${equip2}</h1> <br>
+        <h1>Equipamento 3:${equip3}</h1> <br>
+        <button onclick="deleteArsenal()">Excluir Arsenal?</button>
+        `;
+    }
+    function chooseVillain() {
+        var number = Math.floor(Math.random() * 3) + 1;
+        if (actualVillain != 0) {
+            alert("Você já escolheu um vilão")
+        } else if (number == 1) {
+            actualVillain = "Joker";
+        } else if (number == 2) {
+            actualVillain = "Bane";
+        } else {
+            actualVillain = "Ras";
         }
-        fetch("/statsBattle/getItens/" + id, { cache: 'no-store' }, {
-            method: "GET",
+        villainTitle.innerHTML = `<h1> O vilão que você irá enfrenter é: ${actualVillain} </h1>`
+    }
+    function changeBatman() {
+        if (dataBaseDamage > 210) {
+            batmans[1].style.display = "block";
+            actualBatman = "Batman Samurai";;
+        } else if (dataBaseEvasion >= 190) {
+            batmans[3].style.display = "block";
+            actualBatman = "Batman Ano Um";
+        } else if (dataBaseHp > 170) {
+            batmans[0].style.display = "block";
+            actualBatman = "Batman Frank Miller";
+        } else if (dataBaseDefense >= 180) {
+            batmans[2].style.display = "block";
+            actualBatman = "Armored Batman";
+        }
+    }
+
+    var villainHealth = 0;
+    var heroHealth = null;
+    // HEALTHS
+    var totalDamage = 0;
+    var damageTaken = 0;
+    var percentageHHp = 0; // 
+    var percentageVHp = 0; //
+    //DAMAGES
+    var clicksD = 0;
+    var clicksH = 0;
+    var clicksVillain = 0;
+    // UTILITIES
+    var totalClicks = 0;
+    //
+
+    function calcDamage() {
+        var clickDamage = dataBaseDamage;
+        var maxClicksD = (dataBaseEvasion * 0.10) + (dataBaseDefense * 0.10); // Cliques para dar baseados na defesa e 
+        maxClicksD = maxClicksD / (dataBaseDamage * 0.050);
+        // alert(maxClicksD);
+        // alert (totalDamage);
+        var randomNumber = Math.random();
+        // Avoid system
+        // alert(villainHealth)
+
+        if (maxClicksD > clicksD) {
+            var actualDamage = 0;
+            if (actualVillain == "Joker") {
+                villainHealth = joker.hp;
+                villainEvasion = (joker.evasion / 400);
+                if (villainEvasion > randomNumber) {
+                    avoidV.innerHTML = `<h1> O Joker desviou! </h1>`;
+                } else {
+                    actualDamage = (clickDamage - (joker.defense / 100) * 2);
+                    villainHealth -= actualDamage;
+                }
+            } else if (actualVillain == "Bane") {
+                villainHealth = bane.hp;
+                villainEvasion = (bane.evasion / 400);
+                if (villainEvasion > randomNumber) {
+                    avoidV.innerHTML = `<h1> O Bane desviou! </h1>`;
+                } else {
+                    actualDamage = (clickDamage - (bane.defense / 100) * 2);
+                    villainHealth -= actualDamage;
+                }
+            } else if (actualVillain == "Ras") {
+                villainHealth = ras.hp;
+                villainEvasion = (ras.evasion / 400);
+                if (villainEvasion > randomNumber) {
+                    avoidV.innerHTML = `<h1> O Ra's desviou! </h1>`;
+                } else {
+                    actualDamage = (clickDamage - (ras.defense / 100) * 2);
+                    villainHealth -= actualDamage
+                }
+            }
+            clicksD++;
+            totalDamage = clicksD * actualDamage;
+            percentageVHp = (villainHealth / totalDamage) * 100;
+            damageDealt.innerHTML = `
+            <h1>Você causou ${totalDamage} dano</h1>
+            <h1>Restante ${percentageVHp}% da vida de ${actualVillain}</h1>
+            `
+        } else {
+            alert("Clicks máximos atingidos");
+        }
+
+    }
+    function calcDamageTaken() {
+        var reduction = 10; // Coeficiente de defesa
+        var damageReduction = (dataBaseDefense / 50) * reduction // Dano reduzido pela defesa
+        // damage reduction
+        var evasionChance = (dataBaseEvasion / 400); //Chance de desviar
+        var randomNumber = Math.random();
+        // Avoid System
+        if (heroHealth == null) {
+            heroHealth = dataBaseHp;
+        }
+        var clickVillainDamage = 0;
+        if (actualVillain == "Joker") {
+            clicksVillain = 12;
+            clickVillainDamage = joker.damage
+            // (joker.evasion * 0.10) - (joker.defense * 0.10);
+        } else if (actualVillain == "Bane") {
+            clickVillainDamage = bane.damage
+            clicksVillain = 2;
+            // (bane.defense * 0.10) - (bane.evasion * 0.10);
+        } else if (actualVillain == "Ras") {
+            clickVillainDamage = ras.damage
+            clicksVillain = 3;
+            // (ras.evasion * 0.10) - (ras.defense * 0.10);
+        }
+        if (clicksH < clicksVillain) {
+            if (actualVillain == "Joker") {
+                clickVillainDamage -= damageReduction; // Redução de dano
+                if (evasionChance > randomNumber) {
+                    avoidH.innerHTML = `<h1> Você desviou! </h1>`;
+                } else {
+                    heroHealth -= clickVillainDamage
+                }
+            } else if (actualVillain == "Bane") {
+                clickVillainDamage -= damageReduction; // Redução de dano
+                if (evasionChance > randomNumber) {
+                    avoidH.innerHTML = `<h1> Você desviou! </h1>`;
+                } else {
+                    heroHealth -= clickVillainDamage
+                }
+            } else if (actualVillain == "Ras") {
+                clickVillainDamage -= damageReduction; // Redução de dano
+                if (evasionChance > randomNumber) {
+                    avoidH.innerHTML = `<h1> Você desviou! </h1>`;
+                } else {
+                    heroHealth -= clickVillainDamage
+                }
+            }
+            clicksH++;
+            // damageVillain = heroHealth;
+            percentageHHp = (heroHealth * 100 / dataBaseHp).toFixed(2)
+
+            damageVillain.innerHTML = `
+            <h1>Você está com ${heroHealth.toFixed(2)} de vida</h1>
+            <h1>Representa ${percentageHHp}% da sua vida</h1>
+            `
+            damageTaken = heroHealth;
+        } else {
+            alert("Máximo de defesas atingido");
+        }
+    }
+
+    function resultsInsert() {
+        var points = ((totalDamage * 0.5) + (heroHealth * 0.3)).toFixed(0);
+        var sendDamage = totalDamage;
+        var sendPercentageVillainHealth = percentageVHp;
+        var sendHealth = heroHealth;
+        var sendPercentageHeroHealth = percentageHHp;
+        fetch(`/battlePage/resultsInsert/${idEquipamento}/${fkLogin}`, {
+            method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then(function (resposta) {
-
-            resposta.json().then(resposta => {
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                console.log(resposta);
-                resposta.forEach((loadout) => {
-                    equip1.innerHTML = `<h1> ${loadout.equip1} </h1> <br>
-                    <h1>${loadout.equip2} </h1> <br>
-                    <h1>${loadout.equip3} </h1>`
-                })
-                plotarGrafico(resposta, id)
-            });
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                pointsServer: points,
+                actualBatmanServer: actualBatman,
+                sendDamageServer: sendDamage,
+                sendHealthServer: sendHealth,
+                actualVillainServer: actualVillain,
+                // idEquipamentoServer: idEquipamento,
+            }),
+        })
     }
 
+    function deleteArsenal() {
+                        fetch("/battlePage/deleteArsenal", {
+                            method: "DELETE",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                idEquipamentoServer: idEquipamento,
+                            }),
+                        })
+                            .then(resposta => {
+                                if (!resposta.ok) {
+                                    throw new Error(`Erro na requisição: ${resposta.statusText}`);
+                                }
+                                return resposta.json();
+                            })
+                            .then(data => {
+                                console.log("Equipamento excluído com sucesso:", data);
+                                setTimeout(function () {
+                                    console.log("Redirecionando")
+                                    window.location = "./statsBattle.html";
+                                }, 1000);
+                                console.log(resposta);
+                            })
+                            .catch(error => {
+                                console.error("Erro ao excluir equipamento:", error);
+
+                            });
+                    }
+
+    function leaderboard() {
+                        fetch("battlePage/leaderboard", { cache: 'no-store' }, {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        }).then(function (resposta) {
+                            if (resposta.ok) {
+                                resposta.json().then(resposta => {
+                                    const list = document.querySelector(".geral-leaderboard");
+                                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                                    console.log(resposta);
+                                    resposta.forEach((resposta) => {
+                                        var li = document.createElement('li');
+                                        li.innerHTML = `${resposta.idAnalytics}: ${resposta.points}: ${resposta.actualBatman}: ${resposta.sendDamage}: ${resposta.sendHealth}: ${resposta.actualVillain}: ${resposta.fkEquipamento}: ${resposta.fkLoginEquipamento}`;
+                                        li.classList.add('leaderboard-item')
+                                        list.appendChild(li);
+                                    })
+                                }).catch(function (erro) {
+                                    console.error(`#ERRO: ${resposta}`);
+                                });
+                            }
+                        })
+                    }
+
+
+    function getItens() {
+                        ctx.id = `myChartCanvas${id}`;
+                        fetch("/statsBattle/getItens/" + id, { cache: 'no-store' }, {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        }).then(function (resposta) {
+
+                            resposta.json().then(resposta => {
+                                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                                console.log(resposta);
+                                resposta.forEach((loadout) => {
+                                    dataBaseDamage = resposta[0].dataBaseDamage;
+                                    dataBaseDefense = resposta[0].dataBaseDefense;
+                                    dataBaseEvasion = resposta[0].dataBaseEvasion;
+                                    dataBaseHp = resposta[0].dataBaseHp;
+                                    equip1 = resposta[0].equip1;
+                                    equip2 = resposta[0].equip2;
+                                    equip3 = resposta[0].equip3;
+                                    fkLogin = resposta[0].fkLogin;
+                                    idEquipamento = resposta[0].idEquipamento;
+                                    changeTitles();
+                                    changeBatman();
+                                    if (idEquipamento == undefined) {
+                                        setTimeout(function () {
+                                            console.log("Redirecionando")
+                                            window.location = "./statsBattle.html";
+                                        }, 1000);
+                                    }
+                                })
+                                plotarGrafico(resposta, id)
+                            });
+                        }).catch(function (resposta) {
+                            console.log(`#ERRO: ${resposta}`);
+                        });
+                    }
     function plotarGrafico(resposta, id) {
+                        console.log('iniciando plotagem do gráfico...');
+                        // Criando estrutura para plotar gráfico - labels
+                        let labels = [];
+                        // Criando estrutura para plotar gráfico - dados
+                        let dados = {
+                            labels: labels,
+                            datasets: [{
+                                label: 'HP',
+                                data: [],
+                                fill: true,
+                                backgroundColor: 'rgb(0, 192, 0)',
+                                tension: 0.1
+                            },
+                            {
+                                label: 'DANO',
+                                data: [],
+                                fill: true,
+                                backgroundColor: 'rgb(255, 0, 0)',
+                                tension: 0.1
+                            },
+                            {
+                                label: 'DEFESA',
+                                data: [],
+                                fill: true,
+                                backgroundColor: 'rgb(255, 255, 255)',
+                                tension: 0.1
+                            },
+                            {
+                                label: 'EVASÃO',
+                                data: [],
+                                fill: true,
+                                backgroundColor: 'rgb(0, 0, 255)',
+                                tension: 0.1
+                            }
+                            ]
+                        };
 
-        console.log('iniciando plotagem do gráfico...');
+                        console.log('----------------------------------------------')
+                        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+                        console.log(resposta)
 
-        // Criando estrutura para plotar gráfico - labels
-        let labels = [];
+                        // Inserindo valores recebidos em estrutura para plotar o gráfico
+                        for (i = 0; i < resposta.length; i++) {
+                            var registro = resposta[i];
+                            labels.push(registro);
+                            dados.datasets[0].data.push(registro.dataBaseHp);
+                            dados.datasets[1].data.push(registro.dataBaseDamage);
+                            dados.datasets[2].data.push(registro.dataBaseDefense);
+                            dados.datasets[3].data.push(registro.dataBaseEvasion);
+                        }
 
-        // Criando estrutura para plotar gráfico - dados
-        let dados = {
-            labels: labels,
-            datasets: [{
-                label: 'HP',
-                data: [],
-                fill: true,
-                backgroundColor: 'rgb(0, 192, 0)',
-                tension: 0.1
-            },
-            {
-                label: 'DANO',
-                data: [],
-                fill: true,
-                backgroundColor: 'rgb(255, 0, 0)',
-                tension: 0.1
-            },
-            {
-                label: 'DEFESA',
-                data: [],
-                fill: true,
-                backgroundColor: 'rgb(0, 0, 0)',
-                tension: 0.1
-            },
-            {
-                label: 'EVASÃO',
-                data: [],
-                fill: true,
-                backgroundColor: 'rgb(0, 0, 255)',
-                tension: 0.1
-            }
-        ]
-        };
+                        console.log('----------------------------------------------')
+                        console.log('O gráfico será plotado com os respectivos valores:')
+                        console.log('Labels:')
+                        console.log(labels)
+                        console.log('Dados:')
+                        console.log(dados.datasets)
+                        console.log('----------------------------------------------')
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+                        // Criando estrutura para plotar gráfico - config
+                        const config = {
+                            type: 'bar',
+                            data: dados,
+                        };
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro);
-            dados.datasets[0].data.push(registro.dataBaseHp);
-            dados.datasets[1].data.push(registro.dataBaseDamage);
-            dados.datasets[2].data.push(registro.dataBaseDefense);
-            dados.datasets[3].data.push(registro.dataBaseEvasion);
-        }
+                        // Adicionando gráfico criado em div na tela
+                        let myChart = new Chart(
+                            document.getElementById(`myChartCanvas${id}`),
+                            config
+                        );
+                    }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
-
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'bar',
-            data: dados,
-        };
-
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas${id}`),
-            config
-        );
-
-        // setTimeout(() => atualizarGrafico(id, dados, myChart), 2000);
-    }
-
-
-
-
-    // function obterDadosGrafico(id) {
-
-    //     fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-    //         if (response.ok) {
-    //             response.json().then(function (resposta) {
-    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-    //                 resposta.reverse();
-
-    //                 plotarGrafico(resposta, idAquario);
-
-    //             });
-    //         } else {
-    //             console.error('Nenhum dado encontrado ou erro na API');
-    //         }
-    //     })
-    //         .catch(function (error) {
-    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    //         });
-    // }
-
-
-
-
-    // function generateTable(){
-    // new Chart(ctx, {
-    //     type: 'radar',
-    //     data: {
-    //         labels: ['Dano', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    //         datasets: [{
-    //             label: ['Hp', 'Dano', 'Defesa', 'Evasão'],
-    //             data: [12, 19, 3, 5, 2, 3],
-    //             borderWidth: 1,
-    //             backgroundColor: 'rgba (67, 43, 49, 0.5)',
-    //             borderColor: 'rba (33, 129, 205)',
-    //             borderWidth: 1,
-    //         }],
-    //     },
-    //     options: {
-    //         scales: {
-    //             r: {
-    //                 min: 0,
-    //                 max: 300,
-    //             },
-    //         },
-    //     },
-    // });
 </script>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../public/css/statsBattle.css">
+    <link rel="stylesheet" href="./css/statsBattle.css">
 </head>
 
 <body>
@@ -70,22 +70,22 @@
         weaponry.addEventListener("click", function selectWeapon() {
             if (equipLoad < 3) {
                 if (index === 0) {
-                    div_name.innerHTML = `Você selecionou os Batrangs? Boa escolha.`;
-                    names.push("Batrang");
+                    div_name.innerHTML = `Você selecionou os Batarangs? Boa escolha.`;
+                    names.push("Batarang");
                     damages.push(100);
                     defenses.push(0);
-                    evasions.push(0);
+                    evasions.push(25);
                     // batBelt.push(weaponry[index]);
                 } else if (index === 1) {
                     div_name.innerHTML = `Uma arma de eletricidade? Parece perfeita para eletrizar seus inimigos.`;
                     names.push("Arma de Eletricidade");
-                    damages.push(20);
-                    defenses.push(0);
-                    evasions.push(0);
+                    damages.push(40);
+                    defenses.push(20);
+                    evasions.push(20);
                 } else if (index === 2) {
                     div_name.innerHTML = `Uma espada, o que isto está fazendo aqui? Não é do feitio do patrão Bruce escolher este tipo de arma, porém funciona muito bem.`;
                     names.push("Espada");
-                    damages.push(150);
+                    damages.push(125);
                     defenses.push(25);
                     evasions.push(0);
                 } else if (index === 3) {
@@ -93,7 +93,7 @@
                     names.push("Bomba de fumaça");
                     damages.push(0);
                     defenses.push(0);
-                    evasions.push(100);
+                    evasions.push(150);
                 }
                 equipLoad++;
             } else {
@@ -115,7 +115,7 @@
                     names.push("Capa");
                     damages.push(0);
                     defenses.push(25);
-                    evasions.push(100);
+                    evasions.push(50);
                 } else if (index === 2) {
                     div_name.innerHTML = `Um par de luvas? Entendi, não quer machucar as suas mãos enquanto você bate em seus inimigos.`;
                     names.push("Luvas");
@@ -176,7 +176,7 @@
         if (equipLoad == 3) {
             div_stats.innerHTML = ` <br>
         <h1> Status do Personagem </h1> </br>
-            HP: ${totalDefense + totalEvasion} <br>
+            HP: ${totalDamage * 0.1 + totalDefense * 1 + totalEvasion * 0.5} <br>
             Dano Total: ${totalDamage} <br>
             Defesa Total: ${totalDefense}<br>
             Evasão Total: ${totalEvasion}<br>

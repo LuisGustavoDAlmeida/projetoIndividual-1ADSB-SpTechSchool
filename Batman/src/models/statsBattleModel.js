@@ -3,7 +3,7 @@ var database = require("../database/config")
 function confirmItens(equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBaseDefense, dataBaseEvasion, id) {
 
     var instrucao = `
-    INSERT INTO loadout (equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBaseDefense, dataBaseEvasion, fkLogin) VALUES ('${equip1}' , '${equip2}' , '${equip3}' , '${dataBaseHp}' , '${dataBaseDamage}', '${dataBaseDefense}', '${dataBaseEvasion}', '${id}'); 
+    INSERT INTO loadout (equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBaseDefense, dataBaseEvasion, fkLogin) VALUES ('${equip1}' , '${equip2}' , '${equip3}' , '${dataBaseHp}' , '${dataBaseDamage}', '${dataBaseDefense}', '${dataBaseEvasion}', ${id}); 
     `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
@@ -13,7 +13,7 @@ function confirmItens(equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBa
 function getItens (fkLogin) {
     // console.log ("Valor da fkLogin", fkLogin)
     var instrucao = `
-    SELECT * from loadout where fkLogin = '${fkLogin}';
+    select * from loadout where fkLogin = ${fkLogin};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

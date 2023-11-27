@@ -19,6 +19,8 @@ var indexRouter = require("./src/routes/index");
 /* Minhas rotas */
 var wayneManorRouter = require("./src/routes/wayneManor");
 var statsBattleRouter = require("./src/routes/statsBattle");
+var battlePageRouter = require("./src/routes/battlePage");
+// var leaderboardRouter = require("./src/routes/leaderboard")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -35,6 +37,9 @@ app.use("/", indexRouter);
 /*/ Minhas rotas */
 app.use ("/wayneManor", wayneManorRouter);
 app.use ("/statsBattle", statsBattleRouter);
+app.use ("/battlePage", battlePageRouter);
+// app.use ("/leaderboard", leaderboardRouter);
+
 
 app.listen(PORTA, function () {
     console.log(`Servidor do seu site já está rodando! Acesse o caminho a seguir para visualizar: http://localhost:${PORTA} \n

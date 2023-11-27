@@ -55,11 +55,15 @@ function confirmItens(req, res) {
 
 function getItens(req, res) {
     var fkLogin = req.params.idServer;
+    var idEquipamento = req.params.idEquipamento;
+
     
-    statsBattleModel.getItens(fkLogin).then((resultado) => {
+    statsBattleModel.getItens(idEquipamento).then((resultado) => {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
-        } else {
+            // resultado = resultado[0];
+        }  
+        else {
         res.status(204).send ("Nenhum resultado encontrado!")
         }
         // res.status(200).send ("Equipamentos foram lidos com sucesso");
