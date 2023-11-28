@@ -70,36 +70,45 @@
             </div>
         </section>
         <section class="battle">
-            <div class="title">
+            <!-- <div class="title">
                 <h1 id="villainTitle"></h1>
-            </div>
-            <div class="interative">
-                <div class="actions">
-                    <button onclick="calcDamage()">Golpear</button>
-                    <button onclick="calcDamageTaken()">Defender</button>
-                    <button">Ver status</button>
+            </div> -->
+            <div class="battle-screen">
+                <div class="characters">
+                    <div class="hero">
+                        <img src="./assets/imgs/finalBattle/batmanBattle.png" alt="">
+                    </div>
+                    <div class="villain">
+                        <img src="./assets/imgs/finalBattle/jokerTurn.webp" alt="" class="villain-battle" id="villain1">
+                        <img src="./assets/imgs/finalBattle/baneTurn.webp" alt="" class="villain-battle" id="villain2">
+                        <img src="./assets/imgs/finalBattle/rasTurn.png" alt="" class="villain-battle" id="villain3">
+                    </div>
+                </div>
+                <div class="interative">
+                    <div class="actions">
+                        <button onclick="calcDamage()">Golpear</button>
+                        <button onclick="calcDamageTaken()">Defender</button>
                         <button onclick="resultsInsert()">Registrar seu resultado?</button>
-                </div>
-                <div class="stats-box">
-                    <div id="avoidV">
-                        <h1></h1>
                     </div>
-                    <div id="damageDealt">
-                        <h1>Você causou 0 dano</h1>
-                        <h1>Representa 0% da sua vida</h1>
+                    <div class="stats-box">
+                        <div id="avoidV">
+                            <h1></h1>
+                        </div>
+                        <div id="damageDealt">
+                            <h1>Você causou 0 dano</h1>
+                            <h1>Representa 0% da sua vida</h1>
+                        </div>
+                        <div id="avoidH">
+                            <h1></h1>
+                        </div>
+                        <div id="damageVillain">
+                            <h1>Você recebeu 0 dano</h1>
+                            <h1>Representa 0% da sua vida</h1>
+                        </div>
+                        <div id="points-result">
+                            <h1>Sua pontuação é de: </h1>
+                        </div>
                     </div>
-                    <div id="avoidH">
-                        <h1></h1>
-                    </div>
-                    <div id="damageVillain">
-                        <h1>Você recebeu 0 dano</h1>
-                        <h1>Representa 0% da sua vida</h1>
-                    </div>
-                    <div class="points-result">
-                        <h1>Você ganhou e sua pontuação foi: 555</h1>
-                    </div>
-                </div>
-                <div class="villain">
                 </div>
             </div>
         </section>
@@ -108,8 +117,7 @@
 
             </div>
             <div class="control-leaderboard">
-                <button onclick="leaderboard()">Exibir leaderboard?</button>
-                <button>Limpar seu registro na leaderboard?</button>
+                <button onclick="leaderboard()">Ainda há esperança para Gotham City?</button>
                 <!-- FAZER MAIS UMA ROTA PARA TE TIRAR DAQUI PARA REMOVER A FK AI SIM VOCÊ PPDE REMOVER LÁ EM CIMA SEU EQUIPAMENTO -->
             </div>
         </section>
@@ -126,6 +134,7 @@
     const idEquipamento = sessionStorage.ID_EQUIPAMENTO;
     const batmans = document.querySelectorAll(".image");
     let dataBaseDamage, dataBaseDefense, dataBaseEvasion, dataBaseHp, equip1, equip2, equip3, fkLogin // Armazenar dados da resposta
+    const villainBattle = document.querySelectorAll (".villain-battle");
 
 
 
@@ -159,7 +168,7 @@
         <h1>Equipamento 1: ${equip1}</h1> <br>
         <h1>Equipamento 2:${equip2}</h1> <br>
         <h1>Equipamento 3:${equip3}</h1> <br>
-        <button onclick="updateArsenal()">Excluir Arsenal?</button>
+        <button onclick="updateArsenal()">Escolher outro arsenal?</button>
         `;
     }
     function chooseVillain() {
@@ -168,10 +177,13 @@
             alert("Você já escolheu um vilão")
         } else if (number == 1) {
             actualVillain = "Joker";
+            villainBattle[0].style.display = "block";
         } else if (number == 2) {
             actualVillain = "Bane";
+            villainBattle[1].style.display = "block";
         } else {
             actualVillain = "Ras";
+            villainBattle[2].style.display = "block";
         }
         villainTitle.innerHTML = `<h1> O vilão que você irá enfrenter é: ${actualVillain} </h1>`
     }
@@ -325,6 +337,7 @@
         var sendPercentageVillainHealth = percentageVHp;
         var sendHealth = heroHealth;
         var sendPercentageHeroHealth = percentageHHp;
+        points_result.innerHTML = `<h1> Sua pontuação é de ${points}</h1>`
         fetch(`/battlePage/resultsInsert/${idEquipamento}/${fkLogin}`, {
             method: "POST",
             headers: {
@@ -344,33 +357,33 @@
     }
 
     function updateArsenal() {
-        fetch(`/battlePage/updateArsenal/${fkLogin}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                idEquipamentoServer: idEquipamento,
-            }),
-        })
-            .then(resposta => {
-                if (!resposta.ok) {
-                    throw new Error(`Erro na requisição: ${resposta.statusText}`);
-                }
-                return resposta.json();
-            })
-            .then(data => {
-                console.log("Equipamento excluído com sucesso:", data);
-                setTimeout(function () {
-                    console.log("Redirecionando")
-                    window.location = "./statsBattle.html";
-                }, 1000);
-                console.log(resposta);
-            })
-            .catch(error => {
-                console.error("Erro ao excluir equipamento:", error);
+        // fetch(`/battlePage/updateArsenal/${fkLogin}`, {
+        //     method: "PUT",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         idEquipamentoServer: idEquipamento,
+        //     }),
+        // })
+        //     .then(resposta => {
+        //         if (!resposta.ok) {
+        //             throw new Error(`Erro na requisição: ${resposta.statusText}`);
+        //         }
+        //         return resposta.json();
+        //     })
+        //     .then(data => {
+        //         console.log("Equipamento excluído com sucesso:", data);
+        setTimeout(function () {
+            console.log("Redirecionando")
+            window.location = "./statsBattle.html";
+        }, 1000);
+        //     console.log(resposta);
+        // })
+        // .catch(error => {
+        //     console.error("Erro ao excluir equipamento:", error);
 
-            });
+        // });
     }
 
     function leaderboard() {
@@ -387,7 +400,7 @@
                     console.log(resposta);
                     resposta.forEach((resposta) => {
                         var li = document.createElement('li');
-                        li.innerHTML = `${resposta.idAnalytics}: ${resposta.points}: ${resposta.actualBatman}: ${resposta.sendDamage}: ${resposta.sendHealth}: ${resposta.actualVillain}: ${resposta.fkEquipamento}: ${resposta.fkLoginEquipamento}`;
+                        li.innerHTML = `${resposta.username}: ${resposta.points}: ${resposta.actualBatman}: ${resposta.sendDamage}: ${resposta.sendHealth}: ${resposta.actualVillain}: ${resposta.fkEquipamento}:`;
                         li.classList.add('leaderboard-item')
                         list.appendChild(li);
                     })

@@ -55,6 +55,7 @@
 <script>
     const username = sessionStorage.USERNAME_USUARIO;
     const idUsuario = sessionStorage.ID_USUARIO;
+    const idEquipamento = sessionStorage.ID_EQUIPAMENTO;
     div_name.innerHTML = `Olá ${username}, você irá ajudar o patrão Bruce desta vez? Por favor escolha os seus equipamentos ao lado:`;
     const weaponry = document.querySelectorAll(".weapon");
     const armory = document.querySelectorAll(".armor");
@@ -74,14 +75,14 @@
                     names.push("Batarang");
                     damages.push(100);
                     defenses.push(0);
-                    evasions.push(25);
+                    evasions.push(50);
                     // batBelt.push(weaponry[index]);
                 } else if (index === 1) {
                     div_name.innerHTML = `Uma arma de eletricidade? Parece perfeita para eletrizar seus inimigos.`;
                     names.push("Arma de Eletricidade");
-                    damages.push(40);
-                    defenses.push(20);
-                    evasions.push(20);
+                    damages.push(50);
+                    defenses.push(50);
+                    evasions.push(50);
                 } else if (index === 2) {
                     div_name.innerHTML = `Uma espada, o que isto está fazendo aqui? Não é do feitio do patrão Bruce escolher este tipo de arma, porém funciona muito bem.`;
                     names.push("Espada");
@@ -108,20 +109,20 @@
                     div_name.innerHTML = `Uma armadura? Proteção demais, nunca é demais.`;
                     names.push("Armadura");
                     damages.push(0);
-                    defenses.push(75);
-                    evasions.push(0);
+                    defenses.push(125);
+                    evasions.push(25);
                 } else if (index === 1) {
                     div_name.innerHTML = `Uma capa? Não pode faltar no kit de um morcego.`;
                     names.push("Capa");
                     damages.push(0);
-                    defenses.push(25);
-                    evasions.push(50);
+                    defenses.push(50);
+                    evasions.push(100);
                 } else if (index === 2) {
                     div_name.innerHTML = `Um par de luvas? Entendi, não quer machucar as suas mãos enquanto você bate em seus inimigos.`;
                     names.push("Luvas");
-                    damages.push(25);
-                    defenses.push(25);
-                    evasions.push(25);
+                    damages.push(50);
+                    defenses.push(50);
+                    evasions.push(50);
                 } else if (index === 3) {
                     div_name.innerHTML = `Não sei qual seria a utilidade deste item... Mas se é da sua escolha, não irei impedi-lo.`
                     names.push("Máscara de gás");
@@ -228,7 +229,7 @@
         else {
             div_name.innerHTML = `Você será redirecionado em breve, vale lembrar que você só pode selecionar 1 arsenal.`
 
-            fetch("/statsBattle/getItens/" + idUsuario, {
+            fetch("/statsBattle/getItens/" + idEquipamento, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

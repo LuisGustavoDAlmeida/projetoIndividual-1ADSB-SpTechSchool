@@ -1,3 +1,8 @@
+@font-face {
+    font-family: trajan;
+    src: url(../assets/fonts/trajan-bold/Trajan\ Bold.ttf);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -5,6 +10,7 @@
     text-decoration: none;
     text-anchor: none;
     list-style: none;
+    font-family: trajan;
 }
 
 ::-webkit-scrollbar {
@@ -52,10 +58,11 @@ section {
     width: 100%;
     height: 15%;
     text-align: center;
-    font-size: 3em;
-    color:white;
+    font-size: 2em;
+    color: white;
     text-shadow: 3px 3px 3px black;
 }
+
 .card .first-section {
     display: flex;
     flex-direction: column;
@@ -64,10 +71,11 @@ section {
     gap: 50px;
     border: 5px solid #4A5575;
 }
+
 .card .first-section .chart {
     width: 100%;
     height: 60%;
-    background-color: rgba(0, 0,0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .card .first-section .loadout {
@@ -84,7 +92,7 @@ section {
     text-shadow: 3px 3px 3px black;
 }
 
-.card .second-section  {
+.card .second-section {
     display: flex;
     flex-direction: column;
     width: 60%;
@@ -114,10 +122,9 @@ section {
 .card .second-section .batman-stats .stats {
     width: 100%;
     text-align: center;
-    font-size: 1em;
+    font-size: 0.9em;
     color: white;
     border: 3px solid #4A5575;
-
 }
 
 .image {
@@ -126,7 +133,7 @@ section {
 
 .villain-sort {
     background-color: black;
-    display: flex; 
+    display: flex;
     flex-direction: column;
 }
 
@@ -136,7 +143,6 @@ section {
     justify-content: space-around;
     width: 100%;
     height: 90%;
-    border: 5px solid blue;
 }
 
 .villain-sort .villains .villain1 img {
@@ -150,7 +156,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 35% center ;
+    object-position: 35% center;
 }
 
 .villain-sort .villains .villain3 img {
@@ -164,38 +170,64 @@ section {
 .villain-sort .villains .villain1 {
     display: flex;
     height: 100%;
-    width: 30%;
-    border: 5px solid white;
-    transform: skewX(-3deg);
+    width: 10%;
+    filter: blur(2px) grayscale(100%);
+    transition: 1s;
 }
 
 
 .villain-sort .villains .villain2 {
     display: flex;
     height: 100%;
-    width: 30%;
-    border: 5px solid white;
-    transform: skewX(-3deg);
+    width: 10%;
+    filter: blur(2px) grayscale(100%);
+    transition: 1s;
 }
-
-
 
 .villain-sort .villains .villain3 {
     display: flex;
     height: 100%;
-    width: 30%;
-    border: 5px solid white;
-    transform: skewX(-3deg);
+    width: 10%;
+    filter: blur(2px) grayscale(100%);
+    transition: 1s;
 }
 
+.villain-sort .villains .villain1:hover {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    transform: skewX(-3deg);
+    border: 5px solid white;
+    filter: blur(0px) grayscale(0%);
+    transition: 1s;
+}
 
+.villain-sort .villains .villain2:hover {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    transform: skewX(-3deg);
+    border: 5px solid white;
+    filter: blur(0px) grayscale(0%);
+    transition: 1s;
+}
+
+.villain-sort .villains .villain3:hover {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    transform: skewX(-3deg);
+    filter: blur(0px) grayscale(0%);
+    border: 5px solid white;
+
+    transition: 1s;
+}
 
 .villain-sort .sort {
     display: flex;
     width: 100%;
     height: 15%;
     justify-content: center;
-    border: 5px solid red;
 }
 
 .villain-sort .sort button {
@@ -203,49 +235,119 @@ section {
     border-radius: 15%;
     border-style: none;
     font-size: 2em;
+    background-color: #4A5575;
+    color: white;
+    transition: 1s;
+}
+
+.villain-sort .sort button:hover {
+    width: 50%;
+    border-radius: 20%;
+    border-style: none;
+    font-size: 2em;
 }
 
 .battle {
-    background-color: gray;
+    background: url(../assets/imgs/finalBattle/gothamLocalBattle.jpg) center/cover no-repeat;
     display: flex;
     flex-direction: column;
     border: 5px solid red;
 }
 
-.battle .title {
+/* .battle .title {
     text-align: center;
-    height: 20%;
+    height: 15%;
     color: white;
-    font-size: 2em;
+    font-size: 1.3em;
     border: 5px solid purple;
-}
+} */
 
-.battle .interative {
+.battle .battle-screen {
     display: flex;
     flex-direction: column;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    align-items: flex-end;
+    /* border: 5px solid orange; */
 }
 
-.battle .interative .actions {
+.battle .battle-screen .interative {
+    display: flex;
+    align-items: flex-end;
+    height: 25%;
+    width: 100%;
+    text-shadow: 3px 3px 3px black;
+    /* border: 5px solid forestgreen; */
+}
+
+.battle .battle-screen .interative .actions {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    height: 15%;
-    border: 5px solid green;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    /* border: solid 5px blue; */
 }
 
-.battle .interative .stats-box {
+.battle .battle-screen  .interative .actions button {
+    border-style: none;
+    color: white;
+    background-color: hsl(222, 20%, 8%);
+    border-radius: 10%;
+    width: 25%;
+    height: 50%;
+    border: 2px solid whitesmoke
+}
+
+.battle .battle-screen .interative .actions button:hover {
+    background-color: hsl(222, 20%, 25%);
+    width: 28%;
+}
+
+.battle .battle-screen .interative .stats-box {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    color: white;
+    background-color: hsl(222, 20%, 8%);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+    border: whitesmoke 5px solid;
+}
+
+.battle .battle-screen .characters {
+    /* border: 5px solid yellow; */
+    display: flex;
+    width: 100%;
+    height: 75%;
+}
+
+.battle .battle-screen .characters .villain {
+    display: flex;
+    justify-content: center;
+    /* border: 5px solid fuchsia; */
+    width: 50%;
+    max-height: 100%;
+}
+
+#villain1, #villain2, #villain3{
+    display: none;
+}
+
+.battle .battle-screen .characters .hero {
+    display: flex;
+    justify-content: center;
+    /* border: 5px solid white; */
     width: 50%;
     height: 100%;
-    border: 5px solid blue;
 }
+
 .leaderboard {
     background: url(../assets/imgs/finalBattle/batSignal.webp) center/cover;
 }
+
 .leaderboard-item {
     font-size: 2em;
     color: white
