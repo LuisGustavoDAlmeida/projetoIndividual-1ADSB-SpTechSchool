@@ -54,11 +54,11 @@
 
 <script>
     const username = sessionStorage.USERNAME_USUARIO;
-    const id = sessionStorage.ID_USUARIO;
+    const idUsuario = sessionStorage.ID_USUARIO;
     div_name.innerHTML = `Olá ${username}, você irá ajudar o patrão Bruce desta vez? Por favor escolha os seus equipamentos ao lado:`;
     const weaponry = document.querySelectorAll(".weapon");
     const armory = document.querySelectorAll(".armor");
-    console.log(id);
+    console.log(idUsuario);
     var equipLoad = 0;
     var names = [];
     var damages = [];
@@ -205,8 +205,12 @@
                     damageServer: dataBaseDamage,
                     defenseServer: dataBaseDefense,
                     evasionServer: dataBaseEvasion,
-                    idServer: id,
+                    idServer: idUsuario,
                 }),
+            })
+            .then(resposta => resposta.json())
+            .then (json => {
+                sessionStorage.ID_EQUIPAMENTO = json.insertId;
             })
             // CRIAR A ROTA AQUI
         } else if (equipLoad == 3) {
@@ -218,13 +222,13 @@
     function getItens() {
         if (names.length === 0) {
             div_name.innerHTML = `Você não pode ir para a batalha sem equipamentos.`;
-        } else if (id == undefined) {
+        } else if (idUsuario == undefined) {
             div_name.innerHTML = `Como você passou pela entrada da Batcaverna sem se registrar? O patrão não irá ficar nada feliz.`
         }
         else {
             div_name.innerHTML = `Você será redirecionado em breve, vale lembrar que você só pode selecionar 1 arsenal.`
 
-            fetch("/statsBattle/getItens/" + id, {
+            fetch("/statsBattle/getItens/" + idUsuario, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

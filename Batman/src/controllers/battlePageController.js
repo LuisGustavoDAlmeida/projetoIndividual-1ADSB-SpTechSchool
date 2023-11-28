@@ -1,29 +1,33 @@
 var battlePageModel = require("../models/battlePageModel");
 
-// function deleteArsenal(req, res) {
-//     var idEquipamento = req.body.idEquipamentoServer;
+function updateArsenal(req, res) {
+    var fkLogin = req.params.fkLogin;
+    var idEquipamento = req.params.idEquipamento;
 
-//     if (idEquipamento == undefined) {
-//         res.status(400).send("Seu equipamento não tem id");
-//     }
+    if (fkLogin == undefined) {
+        res.status(400).send("Seu equipamento não tem id");
+    }
+    if (idEquipamento == undefined) {
+        res.status(400).send("Seu equipamento não tem id");
+    }
 
-//     battlePageModel.deleteArsenal(idEquipamento)
-//         .then(
-//             function (resultado) {
+    battlePageModel.updateArsenal(fkLogin, idEquipamento)
+        .then(
+            function (resultado) {
 
-//                 res.json(resultado);
-//                 if (resultado.length == 1) {
-//                     res.status(200).send("Equipamentos cadastrados com sucesso");
-//                 }
-//             }).catch(function (erro) {
-//                 console.log(erro);
-//                 console.log(
-//                     "\nHouve um erro ao realizar o cadastro! Erro: ",
-//                     erro.sqlMessage
-//                 );
-//                 res.status(500).json(erro.sqlMessage);
-//             })
-// }
+                res.json(resultado);
+                if (resultado.length == 1) {
+                    res.status(200).send("Equipamentos cadastrados com sucesso");
+                }
+            }).catch(function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            })
+}
 
 function resultsInsert(req, res) {
     var points = req.body.pointsServer;
@@ -94,7 +98,7 @@ function leaderboard(req, res) {
 }
 
 module.exports = {
-    // deleteArsenal,
+    updateArsenal,
     resultsInsert,
     leaderboard,
 }

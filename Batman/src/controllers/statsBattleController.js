@@ -54,7 +54,7 @@ function confirmItens(req, res) {
 }
 
 function getItens(req, res) {
-    var fkLogin = req.params.idServer;
+    // var idUsuario = req.params.idUsuario;
     var idEquipamento = req.params.idEquipamento;
 
     

@@ -3,8 +3,8 @@ var router = express.Router();
 
 var battlePageController = require("../controllers/battlePageController");
 
-router.delete("/deleteArsenal", function (req, res) {
-    battlePageController.deleteArsenal(req, res);
+router.put("/updateArsenal/:fkLogin/:idEquipamento", function (req, res) {
+    battlePageController.updateArsenal(req, res);
 });
 
 router.post("/resultsInsert/:idEquipamento/:idServer", function (req, res) {

@@ -1,8 +1,7 @@
 var database = require("../database/config")
 
-function deleteArsenal(idEquipamento) {
-    var instrucao = `
-    delete from loadout where idEquipamento = ${idEquipamento}`
+function updateArsenal(fkLogin, idEquipamento) {
+    var instrucao = `update loadout set equip1 = null, equip2 = null, equip3 = null, dataBaseHp = null, dataBaseDamage = null, dataBaseDefense = null, dataBaseEvasion = null where idEquipamento = ${idEquipamento};`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -23,7 +22,7 @@ function leaderboard() {
 }
 
 module.exports = {
-    deleteArsenal,
+    updateArsenal,
     resultsInsert,
     leaderboard,
 }

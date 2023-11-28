@@ -10,10 +10,10 @@ function confirmItens(equip1, equip2, equip3, dataBaseHp, dataBaseDamage, dataBa
     return database.executar(instrucao);
 }
 
-function getItens (fkLogin) {
+function getItens (idEquipamento) {
     // console.log ("Valor da fkLogin", fkLogin)
     var instrucao = `
-    select * from loadout where fkLogin = ${fkLogin};
+    select * from loadout where idEquipamento = ${idEquipamento};
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
