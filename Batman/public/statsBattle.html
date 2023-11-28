@@ -80,14 +80,14 @@
                 } else if (index === 1) {
                     div_name.innerHTML = `Uma arma de eletricidade? Parece perfeita para eletrizar seus inimigos.`;
                     names.push("Arma de Eletricidade");
-                    damages.push(50);
-                    defenses.push(50);
-                    evasions.push(50);
+                    damages.push(75);
+                    defenses.push(75);
+                    evasions.push(0);
                 } else if (index === 2) {
                     div_name.innerHTML = `Uma espada, o que isto está fazendo aqui? Não é do feitio do patrão Bruce escolher este tipo de arma, porém funciona muito bem.`;
                     names.push("Espada");
-                    damages.push(125);
-                    defenses.push(25);
+                    damages.push(150);
+                    defenses.push(0);
                     evasions.push(0);
                 } else if (index === 3) {
                     div_name.innerHTML = `Bombas de fumaça? Se você gosta de furtividade, isto é essencial.`;
@@ -96,6 +96,7 @@
                     defenses.push(0);
                     evasions.push(150);
                 }
+                // Sum of equipaments stats should be 150;
                 equipLoad++;
             } else {
                 div_name.innerHTML = `Parece que o seu cinto de utilidades está cheio, por favor esvazie ele apertando no botão se for do seu desejo.`;
@@ -109,8 +110,8 @@
                     div_name.innerHTML = `Uma armadura? Proteção demais, nunca é demais.`;
                     names.push("Armadura");
                     damages.push(0);
-                    defenses.push(125);
-                    evasions.push(25);
+                    defenses.push(150);
+                    evasions.push(0);
                 } else if (index === 1) {
                     div_name.innerHTML = `Uma capa? Não pode faltar no kit de um morcego.`;
                     names.push("Capa");
@@ -120,15 +121,15 @@
                 } else if (index === 2) {
                     div_name.innerHTML = `Um par de luvas? Entendi, não quer machucar as suas mãos enquanto você bate em seus inimigos.`;
                     names.push("Luvas");
-                    damages.push(50);
-                    defenses.push(50);
-                    evasions.push(50);
+                    damages.push(75);
+                    defenses.push(0);
+                    evasions.push(75);
                 } else if (index === 3) {
                     div_name.innerHTML = `Não sei qual seria a utilidade deste item... Mas se é da sua escolha, não irei impedi-lo.`
                     names.push("Máscara de gás");
                     damages.push(0);
-                    defenses.push(0);
-                    evasions.push(0);
+                    defenses.push(75);
+                    evasions.push(75);
                 }
                 equipLoad++;
             } else {
@@ -185,7 +186,7 @@
             var equip1 = names[0];
             var equip2 = names[1];
             var equip3 = names[2];
-            var dataBaseHP = totalDefense + totalEvasion;
+            var dataBaseHP = totalDamage * 0.1 + totalDefense * 1 + totalEvasion * 0.5;
             var dataBaseDamage = totalDamage;
             var dataBaseDefense = totalDefense;
             var dataBaseEvasion = totalEvasion;
@@ -229,7 +230,7 @@
         else {
             div_name.innerHTML = `Você será redirecionado em breve, vale lembrar que você só pode selecionar 1 arsenal.`
 
-            fetch("/statsBattle/getItens/" + idEquipamento, {
+            fetch("/statsBattle/getItens/" + sessionStorage.ID_EQUIPAMENTO, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

@@ -248,9 +248,10 @@ section {
 }
 
 .battle {
-    background: url(../assets/imgs/finalBattle/gothamLocalBattle.jpg) center/cover no-repeat;
+    background: url(../assets/imgs/finalBattle/gothamLocalBattle.jpg) center/cover;
     display: flex;
     flex-direction: column;
+    display: none;
     /* border: 5px solid red; */
 }
 

@@ -32,22 +32,22 @@
                 <div class="batman-stats">
                     <div class="stats">
                         <h1>
-                            Se o seu HP é >= 170, <br> você é o Batman do Frank Miller.
+                            Se o seu HP é >= 220, <br> você é o Batman do Frank Miller.
                         </h1>
                     </div>
                     <div class="stats">
                         <h1>
-                            Se o seu DANO é >= 300, <br> você é o Batman Samurai.
+                            Se o seu DANO é >= 225, <br> você é o Batman Samurai.
                         </h1>
                     </div>
                     <div class="stats">
                         <h1>
-                            Se a sua DEFESA é >=180, <br> você é o Armored Batman.
+                            Se a sua DEFESA é >= 200, <br> você é o Armored Batman.
                         </h1>
                     </div>
                     <div class="stats">
                         <h1>
-                            Se a sua EVASÃO é >=190, <br> você é o Batman Ano Um.
+                            Se a sua EVASÃO é >= 210, <br> você é o Batman Ano Um.
                         </h1>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                 <button onclick="chooseVillain()">Sortear vilão</button>
             </div>
         </section>
-        <section class="battle">
+        <section class="battle" id="battleSection">
             <!-- <div class="title">
                 <h1 id="villainTitle"></h1>
             </div> -->
@@ -139,24 +139,24 @@
 
 
     var joker = {
-        damage: 30,
-        defense: 50,
-        evasion: 220,
-        hp: 300
+        damage: 75,
+        defense: 100,
+        evasion: 350,
+        hp: 250
     };
     var bane = {
-        damage: 150,
-        defense: 125,
+        damage: 200,
+        defense: 350,
         evasion: 25,
         hp: 400
     };
     var ras = {
         damage: 100,
-        defense: 100,
-        evasion: 100,
-        hp: 350
+        defense: 150,
+        evasion: 150,
+        hp: 300
     };
-    // All villains have the sum of 300
+    // All villains have the sum of 800,
 
 
     var actualVillain = 0;
@@ -174,17 +174,24 @@
     function chooseVillain() {
         var number = Math.floor(Math.random() * 3) + 1;
         if (actualVillain != 0) {
-            alert("Você já escolheu um vilão")
+            alert("Você já escolheu um vilão");
         } else if (number == 1) {
             actualVillain = "Joker";
+            villainHealth = joker.hp;
+            initialHealth = joker.hp;
             villainBattle[0].style.display = "block";
         } else if (number == 2) {
             actualVillain = "Bane";
+            villainHealth = bane.hp;
+            initialHealth = bane.hp;
             villainBattle[1].style.display = "block";
         } else {
             actualVillain = "Ras";
+            villainHealth = ras.hp;
+            initialHealth = ras.hp;
             villainBattle[2].style.display = "block";
         }
+        battleSection.style.display = "block";
         // villainTitle.innerHTML = `<h1> O vilão que você irá enfrenter é: ${actualVillain} </h1>`
     }
     function changeBatman() {
@@ -201,27 +208,31 @@
             batmans[2].style.display = "block";
             actualBatman = "Armored Batman";
         }
+        // SUM of all stats should be 735
     }
 
     var villainHealth = 0;
     var heroHealth = null;
+    var initialHealth = 0;
     // HEALTHS
     var totalDamage = 0;
     var damageTaken = 0;
+    var actualDamage = 0;
     var percentageHHp = 0; // 
     var percentageVHp = 0; //
     //DAMAGES
     var clicksD = 0;
     var clicksH = 0;
     var clicksVillain = 0;
+    var clicksTrue = 0;
     // UTILITIES
     var totalClicks = 0;
     //
 
     function calcDamage() {
         var clickDamage = dataBaseDamage;
-        var maxClicksD = (dataBaseEvasion * 0.10) + (dataBaseDefense * 0.10); // Cliques para dar baseados na defesa e 
-        maxClicksD = maxClicksD / (dataBaseDamage * 0.050);
+        var maxClicksD = (dataBaseEvasion * 0.10) + (dataBaseDefense * 0.05); // Cliques para dar baseados na defesa e 
+        maxClicksD = maxClicksD / (dataBaseDamage * 0.025); // Balancear de acordo com o dano com o dano, quem dá mais dano, tem menos cliques
         // alert(maxClicksD);
         // alert (totalDamage);
         var randomNumber = Math.random();
@@ -229,41 +240,45 @@
         // alert(villainHealth)
 
         if (maxClicksD > clicksD) {
-            var actualDamage = 0;
             if (actualVillain == "Joker") {
-                villainHealth = joker.hp;
                 villainEvasion = (joker.evasion / 400);
                 if (villainEvasion > randomNumber) {
                     avoidV.innerHTML = `<h1> O Joker desviou! </h1>`;
                 } else {
-                    actualDamage = (clickDamage - (joker.defense / 100) * 2);
+                    actualDamage = (clickDamage - (joker.defense / 100) * 12); // 12 is the base
                     villainHealth -= actualDamage;
+                    clicksTrue++;
                 }
             } else if (actualVillain == "Bane") {
-                villainHealth = bane.hp;
+                // villainHealth = bane.hp;
                 villainEvasion = (bane.evasion / 400);
                 if (villainEvasion > randomNumber) {
                     avoidV.innerHTML = `<h1> O Bane desviou! </h1>`;
                 } else {
-                    actualDamage = (clickDamage - (bane.defense / 100) * 2);
+                    actualDamage = (clickDamage - (bane.defense / 100) * 32); // Bane has 4x more defense
                     villainHealth -= actualDamage;
+                    clicksTrue++;
                 }
             } else if (actualVillain == "Ras") {
-                villainHealth = ras.hp;
+                // villainHealth = ras.hp;
                 villainEvasion = (ras.evasion / 400);
                 if (villainEvasion > randomNumber) {
                     avoidV.innerHTML = `<h1> O Ra's desviou! </h1>`;
                 } else {
-                    actualDamage = (clickDamage - (ras.defense / 100) * 2);
-                    villainHealth -= actualDamage
+                    actualDamage = (clickDamage - (ras.defense / 100) * 18); // Ras is balanced
+                    villainHealth -= actualDamage;
+                    clicksTrue++;
+                }
+                if (percentageVHp < 0) {
+                    clicksD = Infinity;
                 }
             }
             clicksD++;
-            totalDamage = clicksD * actualDamage;
-            percentageVHp = (villainHealth / totalDamage) * 100;
+            totalDamage = clicksTrue * actualDamage;
+            percentageVHp = ((villainHealth / initialHealth) * 100).toFixed(2);
             damageDealt.innerHTML = `
             <h1>Você causou ${totalDamage} dano</h1>
-            <h1>Restante ${percentageVHp.toFixed(1)}% da vida de ${actualVillain}</h1>
+            <h1>Restante ${percentageVHp}% da vida de ${actualVillain}</h1>
             `
         } else {
             alert("Clicks máximos atingidos");
@@ -271,7 +286,7 @@
 
     }
     function calcDamageTaken() {
-        var reduction = 10; // Coeficiente de defesa
+        var reduction = 12; // Coeficiente de defesa
         var damageReduction = (dataBaseDefense / 50) * reduction // Dano reduzido pela defesa
         // damage reduction
         var evasionChance = (dataBaseEvasion / 400); //Chance de desviar
@@ -282,7 +297,7 @@
         }
         var clickVillainDamage = 0;
         if (actualVillain == "Joker") {
-            clicksVillain = 12;
+            clicksVillain = 8;
             clickVillainDamage = joker.damage
             // (joker.evasion * 0.10) - (joker.defense * 0.10);
         } else if (actualVillain == "Bane") {
@@ -291,7 +306,7 @@
             // (bane.defense * 0.10) - (bane.evasion * 0.10);
         } else if (actualVillain == "Ras") {
             clickVillainDamage = ras.damage
-            clicksVillain = 3;
+            clicksVillain = 4;
             // (ras.evasion * 0.10) - (ras.defense * 0.10);
         }
         if (clicksH < clicksVillain) {
@@ -332,11 +347,15 @@
     }
 
     function resultsInsert() {
-        var points = ((totalDamage * 0.5) + (heroHealth * 0.3)).toFixed(0);
+        var damagePoints = Math.max (totalDamage - villainHealth, 0);
+        var defensePoints =  heroHealth;
+        var points = ((damagePoints * 0.5) + (defensePoints * 0.7)).toFixed(0);
         var sendDamage = totalDamage;
         var sendPercentageVillainHealth = percentageVHp;
         var sendHealth = heroHealth;
         var sendPercentageHeroHealth = percentageHHp;
+        // var points = ((totalDamage * (sendPercentageVillainHealth * 0.05)) + (heroHealth * (sendPercentageHeroHealth * 0.03))).toFixed(0);
+        // var points = (sendPercentageVillainHealth * 0.5) + (sendPercentageHeroHealth * 0.3).toFixed(0);
         pointsResult.innerHTML = `<h1> Sua pontuação é de ${points}</h1>`
         fetch(`/battlePage/resultsInsert/${idEquipamento}/${fkLogin}`, {
             method: "POST",
@@ -443,13 +462,13 @@
                         }, 1000);
                     }
                 })
-                plotarGrafico(resposta, idUsuario)
+                plotarGrafico(resposta, idEquipamento)
             });
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
     }
-    function plotarGrafico(resposta, idUsuario) {
+    function plotarGrafico(resposta, idEquipamento) {
         console.log('iniciando plotagem do gráfico...');
         // Criando estrutura para plotar gráfico - labels
         let labels = [];
