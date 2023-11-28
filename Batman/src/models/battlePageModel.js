@@ -16,7 +16,7 @@ function resultsInsert(points, actualBatman, sendDamage, sendHealth, actualVilla
 function leaderboard() {
     var instrucao = `
     select usuario.username, points, actualBatman, sendDamage, sendHealth, actualVillain, fkEquipamento from analytics
-join usuario on fkLoginEquipamento = idUsuario;
+join usuario on fkLoginEquipamento = idUsuario order by points desc;
     `
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);

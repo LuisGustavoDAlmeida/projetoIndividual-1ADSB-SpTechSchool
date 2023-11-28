@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Traga Esperança</title>
     <link rel="stylesheet" href="./css/battle.css">
 </head>
 
@@ -96,7 +96,7 @@
                         </div>
                         <div id="damageDealt">
                             <h1>Você causou 0 dano</h1>
-                            <h1>Representa 0% da sua vida</h1>
+                            <h1>Restante 0% da sua vida</h1>
                         </div>
                         <div id="avoidH">
                             <h1></h1>
@@ -105,7 +105,7 @@
                             <h1>Você recebeu 0 dano</h1>
                             <h1>Representa 0% da sua vida</h1>
                         </div>
-                        <div id="points-result">
+                        <div id="pointsResult">
                             <h1>Sua pontuação é de: </h1>
                         </div>
                     </div>
@@ -166,8 +166,8 @@
         equips.innerHTML = `
         <h1>Número do arsenal: ${idEquipamento} <h1> <br>
         <h1>Equipamento 1: ${equip1}</h1> <br>
-        <h1>Equipamento 2:${equip2}</h1> <br>
-        <h1>Equipamento 3:${equip3}</h1> <br>
+        <h1>Equipamento 2: ${equip2}</h1> <br>
+        <h1>Equipamento 3: ${equip3}</h1> <br>
         <button onclick="updateArsenal()">Escolher outro arsenal?</button>
         `;
     }
@@ -185,19 +185,19 @@
             actualVillain = "Ras";
             villainBattle[2].style.display = "block";
         }
-        villainTitle.innerHTML = `<h1> O vilão que você irá enfrenter é: ${actualVillain} </h1>`
+        // villainTitle.innerHTML = `<h1> O vilão que você irá enfrenter é: ${actualVillain} </h1>`
     }
     function changeBatman() {
-        if (dataBaseDamage > 210) {
+        if (dataBaseDamage > 225) {
             batmans[1].style.display = "block";
             actualBatman = "Batman Samurai";;
-        } else if (dataBaseEvasion >= 190) {
+        } else if (dataBaseEvasion >= 210) {
             batmans[3].style.display = "block";
             actualBatman = "Batman Ano Um";
-        } else if (dataBaseHp > 170) {
+        } else if (dataBaseHp > 220) {
             batmans[0].style.display = "block";
             actualBatman = "Batman Frank Miller";
-        } else if (dataBaseDefense >= 180) {
+        } else if (dataBaseDefense >= 200) {
             batmans[2].style.display = "block";
             actualBatman = "Armored Batman";
         }
@@ -263,7 +263,7 @@
             percentageVHp = (villainHealth / totalDamage) * 100;
             damageDealt.innerHTML = `
             <h1>Você causou ${totalDamage} dano</h1>
-            <h1>Restante ${percentageVHp}% da vida de ${actualVillain}</h1>
+            <h1>Restante ${percentageVHp.toFixed(1)}% da vida de ${actualVillain}</h1>
             `
         } else {
             alert("Clicks máximos atingidos");
@@ -323,7 +323,7 @@
 
             damageVillain.innerHTML = `
             <h1>Você está com ${heroHealth.toFixed(2)} de vida</h1>
-            <h1>Representa ${percentageHHp}% da sua vida</h1>
+            <h1>Restante ${percentageHHp}% da sua vida</h1>
             `
             damageTaken = heroHealth;
         } else {
@@ -337,7 +337,7 @@
         var sendPercentageVillainHealth = percentageVHp;
         var sendHealth = heroHealth;
         var sendPercentageHeroHealth = percentageHHp;
-        points_result.innerHTML = `<h1> Sua pontuação é de ${points}</h1>`
+        pointsResult.innerHTML = `<h1> Sua pontuação é de ${points}</h1>`
         fetch(`/battlePage/resultsInsert/${idEquipamento}/${fkLogin}`, {
             method: "POST",
             headers: {
@@ -400,7 +400,7 @@
                     console.log(resposta);
                     resposta.forEach((resposta) => {
                         var li = document.createElement('li');
-                        li.innerHTML = `${resposta.username}: ${resposta.points}: ${resposta.actualBatman}: ${resposta.sendDamage}: ${resposta.sendHealth}: ${resposta.actualVillain}: ${resposta.fkEquipamento}:`;
+                        li.innerHTML = `<span style="color: rgb(16, 19, 24);"> Usuário: </span> ${resposta.username} <br> <span style="color: rgb(16, 19, 24);"> Pontuação: </span> ${resposta.points} <br> <span style="color: rgb(16, 19, 24);"> Batman Usuário: </span> ${resposta.actualBatman} <br> <span style="color: rgb(16, 19, 24);"> Dano Causado: </span> ${resposta.sendDamage} <br> <span style="color: rgb(16, 19, 24);">Vida Restante: </span> ${resposta.sendHealth} <br> <span style="color: rgb(16, 19, 24);"> Vilão Enfrentado: </span> ${resposta.actualVillain} <br> <span style="color: rgb(16, 19, 24);">Número Equip: </span> ${resposta.fkEquipamento} <br> <br> <br>`;
                         li.classList.add('leaderboard-item')
                         list.appendChild(li);
                     })

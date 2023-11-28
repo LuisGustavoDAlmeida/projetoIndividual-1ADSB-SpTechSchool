@@ -251,7 +251,7 @@ section {
     background: url(../assets/imgs/finalBattle/gothamLocalBattle.jpg) center/cover no-repeat;
     display: flex;
     flex-direction: column;
-    border: 5px solid red;
+    /* border: 5px solid red; */
 }
 
 /* .battle .title {
@@ -315,6 +315,7 @@ section {
     width: 60%;
     height: 100%;
     border: whitesmoke 5px solid;
+    font-size: 0.7em;
 }
 
 .battle .battle-screen .characters {
@@ -346,9 +347,22 @@ section {
 
 .leaderboard {
     background: url(../assets/imgs/finalBattle/batSignal.webp) center/cover;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
-.leaderboard-item {
+.geral-leaderboard {
+    width: 75%;
+    height: 50%;
     font-size: 2em;
-    color: white
+    color: white;
+    overflow: scroll;
+    overflow-x: hidden;
+    background-color: hsl(225, 23%, 37%, 75%);
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+    /* gap: 25px; */
 }
