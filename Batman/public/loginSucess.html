@@ -37,7 +37,7 @@
     let actualSlide = 0;
     const username = sessionStorage.USERNAME_USUARIO;
     slider[actualSlide].classList.add('on');
-    user.innerHTML = `Olá ${username} seja bem-vindo a Batcaverna, clique nos morcegos para selecionar a sua localização. Se você clicar na mansão novamente o seu acesso a Batcaverna terá que ser recuperado novamente.`
+    user.innerHTML = `Olá ${username}, seja bem-vindo a Batcaverna, clique nos morcegos para selecionar a sua localização. Se você clicar na mansão novamente o seu acesso a Batcaverna terá que ser recuperado novamente.`
 
 
     function nextSlider() {
@@ -79,7 +79,7 @@
     }
     function verifyText() {
         if (actualSlide == 0) {
-            user.innerHTML = `Olá ${username} seja bem-vindo a Batcaverna, clique nos morcegos para selecionar a sua localização. Se você clicar na mansão novamente o seu acesso a Batcaverna terá que ser recuperado novamente.`
+            user.innerHTML = `Olá ${username}, seja bem-vindo a Batcaverna, clique nos morcegos para selecionar a sua localização. Se você clicar na mansão novamente o seu acesso a Batcaverna terá que ser recuperado novamente.`
         } else if (actualSlide == 1) {
             user.innerHTML = `Você ${username} está preparado para conhecer os supervilões de Gotham City? Clique na imagem e saiba mais sobre todos eles.`
         } else if (actualSlide == 2){

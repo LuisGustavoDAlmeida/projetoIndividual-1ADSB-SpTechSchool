@@ -35,7 +35,7 @@
                         <div class="overlay">
                             <div class="overlay-text">
                                 <h1>Gotham City</h1>
-                                <h2> Fundada em 1724 por William Gotham em New York. Possuí arquiteturas góticas, e é
+                                <h2> Fundada em 1724 por William Gotham em New York. Possui arquiteturas góticas, e é
                                     famosa por sua corrupção, pobreza, infestações de vermes, poluição e inúmeras ondas
                                     de crime. Lar de supervilões mentalmente insanos, famílias criminosas e lar da
                                     família de bilionários, os Wayne.</h2>
@@ -89,7 +89,7 @@
                                     combater o crime, então ele foi à liga das sombras para treinar com os ninjas
                                     assassinos liderados por Ra's Al Ghul. Ao voltar para Gotham ele enterra Bruce Wayne
                                     e dá nascimento ao Batman, simbolizado por um morcego. O Cavaleiro das Trevas, um
-                                    arauto do medo, com uma compulsão em violência contra criminosos e trazer justiça
+                                    arauto do medo, com uma compulsão por violência contra criminosos e trazer justiça
                                     para Gotham City. Ele utiliza o medo como maior arma contra seus inimigos, além de
                                     ser o maior detetive do mundo e utilizar tecnologias avançadas. Na noite,
                                     nos céus de Gotham, o morcego para os criminosos representa uma ameaça, para os
@@ -102,7 +102,7 @@
         </section>
         <section class="films" id="films">
             <div class="title">
-                <h1>Trilogia do Nolan</h1>
+                <h1>Trilogia do Nolan & The Batman</h1>
             </div>
         </section>
         <section class="film1 parallax">
@@ -365,10 +365,8 @@
         comicsImages[actualComic].classList.add("on");
         actualComic++;
     })
-
     function cadastrar() {
         // aguardar();
-
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
         var usernameVar = input_username.value;
@@ -393,7 +391,6 @@
             // cardErro.style.display = "block";
             // mensagem_erro.innerHTML =
             //     "(Mensagem de erro para todos os campos em branco)";
-
             // finalizarAguardar();
             alert("Seu username deve ter entre 4 e 16 letras");
             return false;
@@ -426,17 +423,13 @@
             })
                 .then(function (resposta) {
                     console.log("resposta: ", resposta);
-
                     if (resposta.ok) {
                         // cardErro.style.display = "block";
-
                         // mensagem_erro.innerHTML =
                         //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
                         setTimeout(() => {
                             window.location = "#login";
                         }, "2000");
-
                         // limparFormulario();
                         // finalizarAguardar();
                     } else {
@@ -451,73 +444,62 @@
         return false;
     }
 
-
-        function entrar() {
-            // aguardar();
-            var usernameVar = input_loginUsername.value;
-            var senhaVar = input_loginPassword.value;
-
-            if (usernameVar == "" || senhaVar == "") {
-                // cardErro.style.display = "block"
-                // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-                // finalizarAguardar();
-                return false;
-            }
-            // else {
-            //     setInterval(sumirMensagem, 5000)
-            // }
-
-            console.log("FORM LOGIN: ", usernameVar);
-            console.log("FORM SENHA: ", senhaVar);
-
-            fetch("/wayneManor/autenticar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // idServer: idVar,
-                    usernameServer: usernameVar,
-                    senhaServer: senhaVar
-
-                })
-            }).then(function (resposta) {
-                console.log("ESTOU NO THEN DO entrar()!")
-                console.log(resposta.status);
-                if (resposta.ok) {
-                    console.log(resposta);
-
-                    resposta.json().then(json => {
-                        // console.log(json)
-                        // console.log(JSON.stringify(json));
-                        // sessionStorage.EMAIL_USUARIO = json.email;
-                        // sessionStorage.ID = json.idUsuario;
-                        sessionStorage.clear();
-                        sessionStorage.ID_USUARIO = json.idUsuario;
-                        sessionStorage.USERNAME_USUARIO = json.username;
-                        sessionStorage.SENHA_USUARIO = json.senha;
-                        // alert (json.username);
-
-                        // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-                        setTimeout(function () {
-                            console.log("Redirecionando")
-                            window.location = "./loadingScreen.html"; /* COLOCAR A ROTA AQUI DEPOIS, PARA A WAYNETECH */
-                        }, 1000); // apenas para exibir o loading
-                    });
-
-                } else {
-                    console.log("Houve um erro ao tentar realizar o login!");
-
-                    resposta.text().then(texto => {
-                        console.error(texto);
-                        // finalizarAguardar(texto);
-                    });
-                }
-            }).catch(function (erro) {
-                console.log(erro);
-            })
+    function entrar() {
+        // aguardar();
+        var usernameVar = input_loginUsername.value;
+        var senhaVar = input_loginPassword.value;
+        if (usernameVar == "" || senhaVar == "") {
+            // cardErro.style.display = "block"
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            // finalizarAguardar();
             return false;
         }
-    
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+        console.log("FORM LOGIN: ", usernameVar);
+        console.log("FORM SENHA: ", senhaVar);
+        fetch("/wayneManor/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // idServer: idVar,
+                usernameServer: usernameVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+            console.log(resposta.status);
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(json => {
+                    // console.log(json)
+                    // console.log(JSON.stringify(json));
+                    // sessionStorage.EMAIL_USUARIO = json.email;
+                    // sessionStorage.ID = json.idUsuario;
+                    sessionStorage.clear();
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.USERNAME_USUARIO = json.username;
+                    sessionStorage.SENHA_USUARIO = json.senha;
+                    // alert (json.username);
+                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    setTimeout(function () {
+                        console.log("Redirecionando")
+                        window.location = "./loadingScreen.html"; /* COLOCAR A ROTA AQUI DEPOIS, PARA A WAYNETECH */
+                    }, 1000); // apenas para exibir o loading
+                });
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    // finalizarAguardar(texto);
+                });
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+        return false;
+    }
 </script>

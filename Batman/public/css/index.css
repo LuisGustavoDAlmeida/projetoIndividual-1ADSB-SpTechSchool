@@ -280,6 +280,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     /* border: 5px solid red; */
 }
 
@@ -306,12 +307,14 @@ h2 {
     background: linear-gradient(180deg, rgba(231, 208, 184, 0.25) 6.25%, rgba(163, 106, 53, 0.25) 26.04%, rgba(76, 29, 14, 0.25) 46.35%, rgba(13, 3, 1, 0.8) 83.33%);
     overflow: scroll;
     overflow-x: hidden;
+    margin: 5% 0 5% 0;
 }
 
 .film1 .begins .top-film {
     width: 100%;
     height: 50%;
     display: flex;
+    margin: 5% 0 5% 0;
 }
 
 .film1 .begins .top-film .phrase {
@@ -335,6 +338,7 @@ h2 {
     display: flex;
     width: 100%;
     height: 100%;
+    margin-bottom: 5%;
 }
 
 .film1 .begins .characters .cast {
@@ -398,6 +402,7 @@ h2 {
     justify-content: center;
     width: 100%;
     border: 5px teal;
+    margin: 5% 0 5% 0;
 }
 
 /*======================================== FILM 2 */
@@ -415,12 +420,14 @@ h2 {
     background: linear-gradient(180deg, rgba(114, 169, 180, 0.25) 6.25%, rgba(69, 117, 133, 0.25) 26.04%, rgba(21, 72, 93, 0.25) 46.35%, rgba(7, 20, 32, 0.8) 83.33%);
     overflow: scroll;
     overflow-x: hidden;
+    margin: 5% 0 5% 0;
 }
 
 .film2 .dark-knight .top-film {
     width: 100%;
     height: 50%;
     display: flex;
+    margin: 5% 0 5% 0;
 }
 
 .film2 .dark-knight .top-film .phrase {
@@ -507,6 +514,7 @@ h2 {
     justify-content: center;
     width: 100%;
     /* border: 5px teal; */
+    margin: 5% 0 5% 0;
 }
 
 /*======================================== FILM 3 */
@@ -525,12 +533,14 @@ h2 {
     background: linear-gradient(180deg, rgba(209, 209, 209, 0.25) 6.25%, rgba(65, 70, 68, 0.25) 26.04%, rgba(50, 51, 50, 0.25) 46.35%, rgba(13, 8, 8, 0.8) 83.33%);
     overflow: scroll;
     overflow-x: hidden;
+    margin: 5% 0 5% 0;
 }
 
 .film3 .dark-knight-rise .top-film {
     width: 100%;
     height: 50%;
     display: flex;
+    margin: 5% 0 5% 0;
 }
 
 .film3 .dark-knight-rise .top-film .phrase {
@@ -616,6 +626,7 @@ h2 {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: 5% 0 5% 0;
     /* border: 5px teal; */
 }
 /*======================================== FILM 4 */
@@ -633,12 +644,14 @@ h2 {
     background: linear-gradient(180deg, rgba(71, 11, 11, 0.25) 6.25%, rgba(128, 15, 15, 0.25) 26.04%, rgba(207, 15, 15, 0.25) 46.35%, rgba(71, 11, 11, 0.8) 83.33%);
     overflow: scroll;
     overflow-x: hidden;
+    margin: 5% 0 5% 0;
 }
 
 .film4 .the-batman .top-film {
     width: 100%;
     height: 50%;
     display: flex;
+    margin: 5% 0 5% 0;
 }
 
 .film4 .the-batman .top-film .phrase {
@@ -724,6 +737,7 @@ h2 {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin: 5% 0 5% 0;
     /* border: 5px teal; */
 }
 

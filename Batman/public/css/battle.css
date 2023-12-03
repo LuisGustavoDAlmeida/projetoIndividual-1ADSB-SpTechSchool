@@ -39,6 +39,36 @@ section {
     height: 100vh;
 }
 
+/* Settings for all sections */
+.back {
+    height: 25vh;
+    width: 100%;
+    background: url(../assets/imgs/wayneManor/batBack.webp) center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.back button {
+    font-family: riffic;
+    width: 300px;
+    font-size: 1.5em;
+    border: 5px solid black;
+    border-radius: 1em;
+    background-color: yellow;
+    transition: 1.5s;
+}
+
+.back a {
+    color: black;
+}
+
+.back button:hover {
+    width: 100%;
+    background-color: yellow;
+}
+
 .parallax {
     min-height: 100%;
     background-attachment: fixed;
@@ -47,12 +77,15 @@ section {
     background-size: cover;
 }
 
+
 .card {
     background: url(../assets/imgs/wayneManor/batmanRain.jpg) center/cover;
     display: flex;
     flex-wrap: wrap;
     padding: 2%;
 }
+
+
 
 .card .title-card {
     width: 100%;
@@ -291,7 +324,7 @@ section {
     /* border: solid 5px blue; */
 }
 
-.battle .battle-screen  .interative .actions button {
+.battle .battle-screen .interative .actions button {
     border-style: none;
     color: white;
     background-color: hsl(222, 20%, 8%);
@@ -334,7 +367,9 @@ section {
     max-height: 100%;
 }
 
-#villain1, #villain2, #villain3{
+#villain1,
+#villain2,
+#villain3 {
     display: none;
 }
 

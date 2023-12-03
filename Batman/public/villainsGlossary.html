@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Glossário de vilões</title>
     <link rel="stylesheet" href="css/villainsGlossary.css">
 </head>
 
@@ -124,6 +124,14 @@
                 </div>
             </div>
         </section>
+        <footer class="back">
+            <button>
+                <a href="./index.html">Voltar para a Mansão?</a>
+            </button>
+            <button>
+                <a href="./loginSucess.html">Voltar para a Seleção?</a>
+            </button>
+        </footer>
     </main>
 </body>
 
@@ -145,7 +153,7 @@
             } else {
                 characterLarge[index].style.display = "block";
             }
-            if (character.id === 'joker' && characterLarge[0]) {
+            if (character.id === 'joker' && characterLarge[index]) {
                 actualCharacter = 0;
                 characterLarge[index].style.display = "block";
                 characterName.innerHTML = `Coringa`;
@@ -163,9 +171,9 @@ O palhaço príncipe do crime de Gotham City, principal vilão do cavaleiro das 
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/jokerBackground.webp`
 
-            } else if (character.id === 'harley' && characterLarge[1]) {
+            } else if (character.id === 'harley' && characterLarge[index]) {
                 actualCharacter = 1;
-                characterLarge[1].style.display = "block";
+                characterLarge[index].style.display = "block";
                 characterName.innerHTML = `Arlequina`;
                 characterName.style.color = `red`;
 
@@ -184,10 +192,10 @@ A palhaça princesa do crime de Gotham City. A antiga psiquiátrica do Asilo Ark
 
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/harleyBackground.webp`
 
-            } else if (character.id === 'twoface' && characterLarge[2]) {
+            } else if (character.id === 'twoface' && characterLarge[index]) {
                 actualCharacter = 2;
                 console.log("Duas Caras");
-                characterLarge[2].style.display = "block";
+                characterLarge[index].style.display = "block";
                 characterName.innerHTML = `<span style="color: white;"> Duas </span>
                     <span style="color: black; text-shadow: 2px 2px 2px white;" > Caras </span>`;
                 textCharacter.innerHTML = `FICHA CRIMINAL #3 <br>
@@ -204,10 +212,10 @@ O antigo promotor de Gotham City, Harvey Dent, um homem totalmente justo e são,
 
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/twofaceBackground.jpg`
 
-            } else if (character.id === 'scarecrow' && characterLarge[3]) {
+            } else if (character.id === 'scarecrow' && characterLarge[index]) {
                 actualCharacter = 3;
                 console.log("Espantalho");
-                characterLarge[3].style.display = "block";
+                characterLarge[index].style.display = "block";
                 characterName.innerHTML = `Espantalho`;
                 characterName.style.color = `orange`;
                 textCharacter.innerHTML = `FICHA CRIMINAL #4 <br>
@@ -223,10 +231,10 @@ Quando criança Jonathan Crane era submetido a experimentos doentios e loucos pe
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/scarecrowBackground.webp`
 
-            } else if (character.id === 'killercroc' && characterLarge[4]) {
+            } else if (character.id === 'killercroc' && characterLarge[index]) {
                 actualCharacter = 4;
                 console.log("Crocodilo");
-                characterLarge[4].style.display = "block";
+                characterLarge[index].style.display = "block";
                 characterName.innerHTML = `Crocodilo`;
                 characterName.style.color = `#5f7368`;
                 textCharacter.innerHTML = `FICHA CRIMINAL #5 <br>
@@ -242,9 +250,9 @@ Waylon Jones, parte homem, parte crocodilo. A maioria dos vilões do cavaleiro d
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/killerBackground.jpg`
 
-            } else if (character.id === 'riddler' && characterLarge[5]) {
+            } else if (character.id === 'riddler' && characterLarge[index]) {
                 actualCharacter = 5;
-                characterLarge[5].style.display = "block";
+                characterLarge[index].style.display = "block";
                 console.log("Charada");
                 characterName.innerHTML = `¿Charada?`;
                 characterName.style.color = `purple`;
@@ -261,9 +269,9 @@ Tente adivinhar essa: Quem é o criminoso genial com afinidade por roxo e verde 
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/riddlerBackground.jpg)`;
 
-            } else if (character.id === 'mrfreeze' && characterLarge[6]) {
+            } else if (character.id === 'mrfreeze' && characterLarge[index]) {
                 actualCharacter = 6;
-                characterLarge[6].style.display = "block";
+                characterLarge[index].style.display = "block";
                 console.log("MrFreeze");
                 characterName.innerHTML = `Sr Frio`;
                 characterName.style.color = `blue`;
@@ -281,9 +289,9 @@ Um especialista na área de criogenia, Victor sempre teve uma vida normal, se es
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/freezeBackground.webp`
 
-            } else if (character.id === 'bane' && characterLarge[7]) {
+            } else if (character.id === 'bane' && characterLarge[index]) {
                 actualCharacter = 7;
-                characterLarge[7].style.display = "block";
+                characterLarge[index].style.display = "block";
                 console.log("Bane");
                 characterName.innerHTML = `Bane`;
                 characterName.style.color = `white`;
@@ -300,9 +308,9 @@ Antonio Diego cresceu em uma prisão na ilha de Santa Prisca pelos crimes de seu
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/baneBackground.jpg!d`
 
-            } else if (character.id === 'penguin' && characterLarge[8]) {
+            } else if (character.id === 'penguin' && characterLarge[index]) {
                 actualCharacter = 8;
-                characterLarge[8].style.display = "block";
+                characterLarge[index].style.display = "block";
                 console.log("Pinguim");
                 characterName.innerHTML = `Pinguim `;
                 characterName.style.color = `grey`;
@@ -320,9 +328,9 @@ Pinguim alimenta uma raiva patológica que reflete em seu físico estranho, perf
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/penguinBackground.jpg)`;
 
-            } else if (character.id === 'rasAlGhul' && characterLarge[9]) {
+            } else if (character.id === 'rasAlGhul' && characterLarge[index]) {
                 actualCharacter = 9;
-                characterLarge[9].style.display = "block";
+                characterLarge[index].style.display = "block";
                 characterName.innerHTML = `Ra's Al Ghul`;
                 characterName.style.color = `#7bc596`;
                 textCharacter.innerHTML = `FICHA CRIMINAL #10 <br>
@@ -338,9 +346,9 @@ Ra's Al Ghul se provou ser um dos vilões mais perigosos e destrutivos do Cavale
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/rasBackground.jpeg`
 
-            } else if (character.id === 'victor' && characterLarge[10]) {
+            } else if (character.id === 'victor' && characterLarge[index]) {
                 actualCharacter = 10;
-                characterLarge[10].style.display = "block";
+                characterLarge[index].style.display = "block";
                 characterName.innerHTML = `Victor Zsasz`;
                 characterName.style.color = `#7d473b`;
                 textCharacter.innerHTML = `FICHA CRIMINAL #11 <br>
@@ -357,9 +365,9 @@ Não há nada de charmoso ou excêntrico em um serial killer devasso e empunhand
 
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/victorBackground.jpg`
 
-            } else if (character.id === 'deadshot' && characterLarge[11]) {
+            } else if (character.id === 'deadshot' && characterLarge[index]) {
                 actualCharacter = 11;
-                characterLarge[11].style.display = "block";
+                characterLarge[index].style.display = "block";
                 console.log("Pistoleiro");
                 characterName.innerHTML = `Pistoleiro`;
                 characterName.style.color = `yellow`;
@@ -378,9 +386,9 @@ Ex-vilão do Batman e fundador do Esquadrão Suicida, Floyd Lawton é o melhor a
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/deadshotBackground.jpg`
 
-            } else if (character.id === 'deathstroke' && characterLarge[12]) {
+            } else if (character.id === 'deathstroke' && characterLarge[index]) {
                 actualCharacter = 12;
-                characterLarge[12].style.display = "block";
+                characterLarge[index].style.display = "block";
                 characterName.innerHTML = `Exterminador`;
                 characterName.style.color = `#db713d`;
                 textCharacter.innerHTML = `FICHA CRIMINAL #13 <br>
@@ -396,10 +404,10 @@ Slade Wilson, um mercenário e assassino de aluguel, sem qualquer escrúpulos em
 `;
                 glossary.style.backgroundImage = `url(./assets/imgs/villainsGlossary/deathstrokeBackground.webp`
 
-            } else if (character.id === 'catwoman' && characterLarge[13]) {
+            } else if (character.id === 'catwoman' && characterLarge[index]) {
                 actualCharacter = 13;
-                characterLarge[13].style.display = "block";
-                console.log("Mulher Gato" && characterLarge[13]);
+                characterLarge[index].style.display = "block";
+                console.log("Mulher Gato" && characterLarge[index]);
                 characterName.innerHTML = `Mulher Gato`;
                 characterName.style.color = `#6c4e66`;
                 textCharacter.innerHTML = `FICHA CRIMINAL #14 <br>
@@ -419,5 +427,4 @@ Se o morcego é o rei dos animais de Gotham, o Gato é definitivamente a rainha,
             }
         });
     });
-
 </script>

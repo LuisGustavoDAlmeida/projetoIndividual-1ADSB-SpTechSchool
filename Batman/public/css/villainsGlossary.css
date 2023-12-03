@@ -58,6 +58,37 @@ section {
     font-family: burton;
 }
 
+/* Settings for all sections */
+.back {
+    height: 25vh;
+    width: 100%;
+    background: url(../assets/imgs/wayneManor/batBack.webp) center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.back button {
+    font-family: riffic;
+    width: 300px;
+    font-size: 1.5em;
+    border: 5px solid black;
+    border-radius: 1em;
+    background-color: yellow;
+    transition: 1.5s;
+}
+
+.back a {
+    color: black;
+}
+
+.back button:hover {
+    width: 100%;
+    background-color: yellow;
+}
+
+
 /* CLASS FOR THE TWO SECTIONS */
 
 .half {

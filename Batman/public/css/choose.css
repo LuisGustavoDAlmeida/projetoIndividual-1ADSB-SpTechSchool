@@ -59,6 +59,7 @@ main {
     width: 100%;
     height: 100%;
     padding: 60px;
+    text-shadow: 1px 1px 1px black;
 }
 
 .slider-text h1{

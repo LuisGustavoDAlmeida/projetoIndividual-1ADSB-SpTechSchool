@@ -121,6 +121,14 @@
                 <!-- FAZER MAIS UMA ROTA PARA TE TIRAR DAQUI PARA REMOVER A FK AI SIM VOCÊ PPDE REMOVER LÁ EM CIMA SEU EQUIPAMENTO -->
             </div>
         </section>
+        <footer class="back">
+            <button>
+                <a href="./index.html">Voltar para a Mansão?</a>
+            </button>
+            <button>
+                <a href="./loginSucess.html">Voltar para a Seleção?</a>
+            </button>
+        </footer>
     </main>
 </body>
 
@@ -134,7 +142,7 @@
     const idEquipamento = sessionStorage.ID_EQUIPAMENTO;
     const batmans = document.querySelectorAll(".image");
     let dataBaseDamage, dataBaseDefense, dataBaseEvasion, dataBaseHp, equip1, equip2, equip3, fkLogin // Armazenar dados da resposta
-    const villainBattle = document.querySelectorAll (".villain-battle");
+    const villainBattle = document.querySelectorAll(".villain-battle");
 
 
 
@@ -347,8 +355,8 @@
     }
 
     function resultsInsert() {
-        var damagePoints = Math.max (totalDamage - villainHealth, 0);
-        var defensePoints =  heroHealth;
+        var damagePoints = Math.max(totalDamage - villainHealth, 0);
+        var defensePoints = heroHealth;
         var points = ((damagePoints * 0.5) + (defensePoints * 0.7)).toFixed(0);
         var sendDamage = totalDamage;
         var sendPercentageVillainHealth = percentageVHp;
