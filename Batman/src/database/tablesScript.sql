@@ -2,45 +2,41 @@ create database projetoIndividual;
 
 use projetoIndividual;
 
-create table cadastro
+drop database projetoindividual;
+
+create table usuario
 (idUsuario int primary key auto_increment,
-usuario varchar(16),
-nome varchar(24),
-sobrenome varchar(24),
-email varchar(45),
-senha char(12));
+username varchar(16) not null,
+nome varchar(24) not null,
+sobrenome varchar(24) not null,
+email varchar(45) not null,
+senha char(12) not null);
 
-create table login 
-(idLogin int primary key auto_increment,
-usuario varchar(16),
-senha char(12),
-fkCadastro int,
-	constraint fkCadastro foreign key (fkCadastro) references cadastro (idUsuario));
+select * from usuario;
 
-create table equipamento 
+create table loadout
 (idEquipamento int primary key auto_increment,
-nomeEquipamento varchar(45),
+equip1 varchar(45),
+equip2 varchar(45),
+equip3 varchar(45),
+dataBaseHp int,
+dataBaseDamage int,
+dataBaseDefense int,
+dataBaseEvasion int,
 fkLogin int, 
-	constraint fkLogin foreign key (fkLogin) references login (idLogin)) auto_increment = 100;
-
-create table viloes 
-(idVilao int primary key auto_increment,
-nomeVilao varchar(45),
-danoVilao int (2),
-vidaVilao int (4)) auto_increment = 1000;
+	constraint fkLogin foreign key (fkLogin) references usuario (idUsuario)) auto_increment = 100;
+    
+select * from loadout;
 
 create table analytics
-(idAnalytics int,
-fkLoginEquipamento int,
-fkViloes int, primary key (idAnalytics, fkLoginEquipamento, fkViloes),
-danoCausado int (4),
-danoRecebido int (4),
-pontuacao int (4),
-	constraint fkLoginEquipamento foreign key (fkLoginEquipamento) references equipamento (idEquipamento),
-    constraint fkViloes foreign key (fkViloes) references viloes (idVilao));
-    
-describe cadastro;
-describe login;
-describe equipamento;
-describe viloes;
-describe analytics;
+(idAnalytics int auto_increment,
+points int(12),
+actualBatman varchar (45),
+sendDamage float (4),
+sendHealth float (4),
+actualVillain varchar(45),
+fkEquipamento int, constraint fkEquipamento foreign key (fkEquipamento) references loadout (idEquipamento),
+fkLoginEquipamento int, constraint fkLoginEquipamento foreign key (fkLoginEquipamento) references loadout (fkLogin),
+primary key (idAnalytics, fkEquipamento, fkLoginEquipamento)) auto_increment = 300;
+
+select * from analytics;

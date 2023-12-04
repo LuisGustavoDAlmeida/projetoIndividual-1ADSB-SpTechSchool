@@ -32,7 +32,7 @@
                 <div class="batman-stats">
                     <div class="stats">
                         <h1>
-                            Se o seu HP é >= 220, <br> você é o Batman do Frank Miller.
+                            Se o seu HP é >= 300, <br> você é o Batman do Frank Miller.
                         </h1>
                     </div>
                     <div class="stats">
@@ -203,13 +203,13 @@
         // villainTitle.innerHTML = `<h1> O vilão que você irá enfrenter é: ${actualVillain} </h1>`
     }
     function changeBatman() {
-        if (dataBaseDamage > 225) {
+        if (dataBaseDamage >= 225) {
             batmans[1].style.display = "block";
             actualBatman = "Batman Samurai";;
         } else if (dataBaseEvasion >= 210) {
             batmans[3].style.display = "block";
             actualBatman = "Batman Ano Um";
-        } else if (dataBaseHp > 220) {
+        } else if (dataBaseHp >= 300) {
             batmans[0].style.display = "block";
             actualBatman = "Batman Frank Miller";
         } else if (dataBaseDefense >= 200) {
@@ -240,7 +240,7 @@
     function calcDamage() {
         var clickDamage = dataBaseDamage;
         var maxClicksD = (dataBaseEvasion * 0.10) + (dataBaseDefense * 0.05); // Cliques para dar baseados na defesa e 
-        maxClicksD = maxClicksD / (dataBaseDamage * 0.025); // Balancear de acordo com o dano com o dano, quem dá mais dano, tem menos cliques
+        maxClicksD = maxClicksD / (dataBaseDamage * 0.035); // Balancear de acordo com o dano com o dano, quem dá mais dano, tem menos cliques
         // alert(maxClicksD);
         // alert (totalDamage);
         var randomNumber = Math.random();
@@ -263,7 +263,7 @@
                 if (villainEvasion > randomNumber) {
                     avoidV.innerHTML = `<h1> O Bane desviou! </h1>`;
                 } else {
-                    actualDamage = (clickDamage - (bane.defense / 100) * 32); // Bane has 4x more defense
+                    actualDamage = (clickDamage - (bane.defense / 100) * 24); // Bane has 3x more defense
                     villainHealth -= actualDamage;
                     clicksTrue++;
                 }
@@ -355,9 +355,12 @@
     }
 
     function resultsInsert() {
-        var damagePoints = Math.max(totalDamage - villainHealth, 0);
+        if (heroHealth < 0){
+            heroHealth = 0;
+        }
+        var damagePoints = (totalDamage) - (villainHealth);
         var defensePoints = heroHealth;
-        var points = ((damagePoints * 0.5) + (defensePoints * 0.7)).toFixed(0);
+        var points = ((damagePoints * 1) + (defensePoints * 1.3)).toFixed(0);
         var sendDamage = totalDamage;
         var sendPercentageVillainHealth = percentageVHp;
         var sendHealth = heroHealth;
