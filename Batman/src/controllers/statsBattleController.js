@@ -56,7 +56,6 @@ function confirmItens(req, res) {
 function getItens(req, res) {
     // var idUsuario = req.params.idUsuario;
     var idEquipamento = req.params.idEquipamento;
-
     
     statsBattleModel.getItens(idEquipamento).then((resultado) => {
         if (resultado.length > 0) {
